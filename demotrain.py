@@ -1,5 +1,6 @@
 import json
 import logging
+import random
 import sys
 import time
 
@@ -59,13 +60,14 @@ for n in ('Rollbahn', 'Gotthard-Basistunnel', 'Airolostrecke', 'Bäderbahn', 'Be
 
 pos = 0
 trackmarker = 0
+random.seed()
 
 while True:
     mqttClient.client.publish('c3toc/train/demo/status', 'alive')
     point = points[pos]
     msg = {
-        'lat': point['lat'],
-        'lon': point['lon'],
+        'lat': point['lat'] + ((0.5 - random.random()) * 0.0001),
+        'lon': point['lon'] + ((0.5 - random.random()) * 0.0001),
         'sat': 99,
         'speed': 3.6
     }
@@ -84,6 +86,8 @@ while True:
         pos = 0
         trackmarker = 0
     else:
-        time.sleep(point['trackmarker'] - trackmarker) # 1 second for each meter, giving 3.6 km/h
+        t = point['trackmarker'] - trackmarker
+        if t > 0:
+            time.sleep(point['trackmarker'] - trackmarker) # 1 second for each meter, giving 3.6 km/h
         trackmarker = point['trackmarker']
 
