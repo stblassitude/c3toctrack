@@ -1,11 +1,15 @@
 #!/usr/bin/env python
+
 import json
+import logging
+import sys
+import time
 
 import gpxpy
 import gpxpy.gpx
+import paho.mqtt.client as mqtt
 
 from c3toctrack import Point, Track, makeWaypoint
-
 
 def gpx2tracks():
     gpx_file = open('data/trainlines.gpx', 'r')
@@ -65,9 +69,51 @@ def gpx2tracks():
         'waypoints': waypoints
     }
 
-def tracks2json():
-    pass
+class MqttClient():
+    FIRST_RECONNECT_DELAY = 1
+    RECONNECT_RATE = 2
+    MAX_RECONNECT_COUNT = 12
+    MAX_RECONNECT_DELAY = 60
+
+    def __init__(self, hostname, username, password, topic):
+        self.client = mqtt.Client()
+        self.client.on_connect = self.on_connect
+        self.client.on_disconnect = self.on_disconnect
+        self.client.on_message = self.on_message
+        self.client.username_pw_set(username, password)
+        self.client.connect(hostname, 1883, 60)
+        self.client.subscribe(topic)
+
+    def on_connect(self, client, userdata, flags, rc):
+        print("Connected with result code "+str(rc))
+
+
+    def on_message(self, client, userdata, msg):
+        print(msg.topic+" "+str(msg.payload))
+
+    def on_disconnect(self, client, userdata, rc):
+        logging.info("Disconnected with result code: %s", rc)
+        reconnect_count, reconnect_delay = 0, MqttClient.FIRST_RECONNECT_DELAY
+        while reconnect_count < MqttClient.MAX_RECONNECT_COUNT:
+            logging.info("Reconnecting in %d seconds...", reconnect_delay)
+            time.sleep(reconnect_delay)
+
+            try:
+                self.client.reconnect()
+                logging.info("Reconnected successfully!")
+                return
+            except Exception as err:
+                logging.error("%s. Reconnect failed. Retrying...", err)
+
+            reconnect_delay *= MqttClient.RECONNECT_RATE
+            reconnect_delay = min(reconnect_delay, MqttClient.MAX_RECONNECT_DELAY)
+            reconnect_count += 1
+        logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
+
 
 tracks = gpx2tracks()
 with open('tracks.json', 'w', encoding="utf-8") as f:
     print(json.dump(tracks, f, default=vars, sort_keys=True, indent=2))
+
+mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/#')
+mqttClient.client.loop_forever()

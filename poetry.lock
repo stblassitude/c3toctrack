@@ -10,7 +10,20 @@ files = [
     {file = "gpxpy-1.5.0.tar.gz", hash = "sha256:e6993a8945eae07a833cd304b88bbc6c3c132d63b2bf4a9b0a5d9097616b8708"},
 ]
 
+[[package]]
+name = "paho-mqtt"
+version = "1.6.1"
+description = "MQTT version 5.0/3.1.1 client class"
+optional = false
+python-versions = "*"
+files = [
+    {file = "paho-mqtt-1.6.1.tar.gz", hash = "sha256:2a8291c81623aec00372b5a85558a372c747cbca8e9934dfe218638b8eefc26f"},
+]
+
+[package.extras]
+proxy = ["PySocks"]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "71c2e1ceff3a2385658834fa7b2b626eb793f74b5bf5564b649456e73ce0f782"
+content-hash = "017c9f73c25f1d118c8f9d24226605b09cf70a30aef6f433410342d171fd870e"
