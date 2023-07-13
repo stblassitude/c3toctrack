@@ -12,7 +12,7 @@ import gpxpy.gpx
 import paho.mqtt.client as mqtt
 from atomicwrites import atomic_write
 
-from c3toctrack import Point, Track, makeWaypoint
+from c3toctrack import Track
 
 
 def gpx2tracks():
@@ -51,28 +51,12 @@ def gpx2tracks():
         for segment in track.segments:
             for point in segment.points:
                 t.add(point.latitude, point.longitude, point.name, start)
-                # if point.name is not None:
-                #     print(f'  {point.latitude:2.5f}, {point.longitude:2.5f}: {point.name}')
-                # else:
-                #     print(f'  {point.latitude:2.5f}, {point.longitude:2.5f}')
 
     waypoints = {}
     for n, t in tracks.items():
         for point in t.points:
             if point.waypoint is not None:
                 waypoints[point.waypoint.trackmarker] = point.waypoint
-        # # print(f'{t.name}: {len(t.points)}')
-        # for p, tm in zip(t.points, t.trackmarker):
-        #     if p.name is not None:
-        #         wp = makeWaypoint(p.lat, p.lon, tm, p.name)
-        #         waypoints[wp.trackmarker] = wp
-            #     print(f'  {p.lat:0.5f}/{p.lon:0.5f}: {tm/1000: 4.3f} {p.name}')
-            # else:
-            #     print(f'  {p.lat:0.5f}/{p.lon:0.5f}: {tm/1000: 4.3f} ')
-
-    # print("   km  type  name")
-    # for trackmarker in sorted(waypoints):
-    #     print(f'{trackmarker/1000:1.3f}  {waypoints[trackmarker].typecode()}    {waypoints[trackmarker].name}')
 
     return {
         'tracks': tracks,
@@ -94,12 +78,22 @@ class MqttClient():
         self.client.username_pw_set(username, password)
         self.client.connect(hostname, 1883, 60)
         self.client.subscribe(topic)
+        self.trains = {}
 
     def on_connect(self, client, userdata, flags, rc):
         print("Connected with result code " + str(rc))
 
     def on_message(self, client, userdata, msg):
         print(msg.topic + " " + str(msg.payload))
+        (_, _, name, kind) = msg.topic.split('/')
+        if kind == 'pos':
+            pos = json.loads(msg.payload.decode('utf-8'))
+            print(pos)
+            self.trains[name] = pos
+        with atomic_write('webroot/train.json', overwrite=True, encoding='utf8') as f:
+            os.fchmod(f.fileno(), 0o664)
+            print(json.dump(self.trains, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2))
+
 
     def on_disconnect(self, client, userdata, rc):
         logging.info("Disconnected with result code: %s", rc)
@@ -130,5 +124,5 @@ with atomic_write('webroot/tracks.json', overwrite=True, encoding='utf8') as f:
     os.fchmod(f.fileno(), 0o664)
     print(json.dump(tracks, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2))
 
-mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/#')
+mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/train/#')
 mqttClient.client.loop_forever()
