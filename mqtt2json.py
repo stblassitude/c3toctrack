@@ -2,6 +2,7 @@
 
 import json
 import logging
+import os
 import sys
 import time
 from shutil import copyfileobj
@@ -115,10 +116,12 @@ class MqttClient():
 
 
 with open('data/index.html', 'r') as input, atomic_write('webroot/index.html', overwrite=True) as output:
+    os.fchmod(output.fileno(), 0o664)
     copyfileobj(input, output)
 
 tracks = gpx2tracks()
 with atomic_write('webroot/tracks.json', overwrite=True) as f:
+    os.fchmod(f.fileno(), 0o664)
     print(json.dump(tracks, f, default=vars, sort_keys=True, indent=2))
 
 mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/#')
