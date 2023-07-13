@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
   <metadata>
-    <time>2023-07-13T12:46:25.621048Z</time>
+    <time>2023-07-13T13:07:59.675446Z</time>
     <bounds minlat="53.0296179" minlon="13.3028658" maxlat="53.0335194" maxlon="13.3125267"/>
   </metadata>
   <wpt lat="53.02988483176" lon="13.30619800674">
@@ -20,6 +20,9 @@
   </wpt>
   <wpt lat="53.02973" lon="13.3038134">
     <name>Hp Tunnel</name>
+  </wpt>
+  <wpt lat="53.0297119" lon="13.3034746">
+    <name>W W201</name>
   </wpt>
   <wpt lat="53.0296214" lon="13.3032052">
   </wpt>
@@ -38,6 +41,9 @@
   <wpt lat="53.0327037" lon="13.3047014">
     <name>Bf Alte Werkstätten</name>
   </wpt>
+  <wpt lat="53.0330105" lon="13.3047884">
+    <name>W W101</name>
+  </wpt>
   <wpt lat="53.0332046" lon="13.3048743">
     <name>Bü Moorweg</name>
   </wpt>
@@ -50,6 +56,9 @@
     <name>Hp Spielplatz</name>
   </wpt>
   <wpt lat="53.0333483" lon="13.3061952">
+  </wpt>
+  <wpt lat="53.0328386" lon="13.3081091">
+    <name>W W402</name>
   </wpt>
   <wpt lat="53.0327396" lon="13.3082722">
   </wpt>
@@ -81,6 +90,9 @@
   </wpt>
   <wpt lat="53.0316383" lon="13.3082396">
   </wpt>
+  <wpt lat="53.0316109" lon="13.3081199">
+    <name>W W401</name>
+  </wpt>
   <wpt lat="53.031476" lon="13.3079697">
     <name>Hp Fnord-Bahnhof</name>
   </wpt>
@@ -92,12 +104,16 @@
   <wpt lat="53.0302041" lon="13.3076041">
     <name>Bü Schrankenposten Laumann</name>
   </wpt>
+  <wpt lat="53.0300037" lon="13.306746">
+    <name>W W301</name>
+  </wpt>
   <wpt lat="53.0297844" lon="13.3058035">
   </wpt>
   <trk>
     <name>Berliner Außenring</name>
     <trkseg>
       <trkpt lat="53.0316109" lon="13.3081199">
+        <name>W W401</name>
       </trkpt>
       <trkpt lat="53.0316281" lon="13.3081803">
       </trkpt>
@@ -224,6 +240,7 @@
       <trkpt lat="53.0327396" lon="13.3082722">
       </trkpt>
       <trkpt lat="53.0328386" lon="13.3081091">
+        <name>W W402</name>
       </trkpt>
     </trkseg>
   </trk>
@@ -231,6 +248,7 @@
     <name>Y-Trasse</name>
     <trkseg>
       <trkpt lat="53.0316109" lon="13.3081199">
+        <name>W W401</name>
       </trkpt>
       <trkpt lat="53.0316316" lon="13.3081582">
       </trkpt>
@@ -251,6 +269,7 @@
       <trkpt lat="53.0327439" lon="13.3081381">
       </trkpt>
       <trkpt lat="53.0328386" lon="13.3081091">
+        <name>W W402</name>
       </trkpt>
     </trkseg>
   </trk>
@@ -258,6 +277,7 @@
     <name>Gotthardbahn</name>
     <trkseg>
       <trkpt lat="53.0297119" lon="13.3034746">
+        <name>W W201</name>
       </trkpt>
       <trkpt lat="53.0298176" lon="13.3035405">
       </trkpt>
@@ -296,6 +316,7 @@
       <trkpt lat="53.0300248" lon="13.3066257">
       </trkpt>
       <trkpt lat="53.0300037" lon="13.306746">
+        <name>W W301</name>
       </trkpt>
     </trkseg>
   </trk>
@@ -303,6 +324,7 @@
     <name>Werkstatt</name>
     <trkseg>
       <trkpt lat="53.0330105" lon="13.3047884">
+        <name>W W101</name>
       </trkpt>
       <trkpt lat="53.0330661" lon="13.3047706">
       </trkpt>
@@ -340,6 +362,7 @@
     <name>Rollbahn</name>
     <trkseg>
       <trkpt lat="53.0330105" lon="13.3047884">
+        <name>W W101</name>
       </trkpt>
       <trkpt lat="53.0327037" lon="13.3047014">
         <name>Bf Alte Werkstätten</name>
@@ -406,6 +429,7 @@
       <trkpt lat="53.0296422" lon="13.3032959">
       </trkpt>
       <trkpt lat="53.0297119" lon="13.3034746">
+        <name>W W201</name>
       </trkpt>
       <trkpt lat="53.0297148" lon="13.3034969">
       </trkpt>
@@ -443,6 +467,7 @@
       <trkpt lat="53.0299781" lon="13.306552">
       </trkpt>
       <trkpt lat="53.0300037" lon="13.306746">
+        <name>W W301</name>
       </trkpt>
     </trkseg>
   </trk>
@@ -450,6 +475,7 @@
     <name>Bäderbahn</name>
     <trkseg>
       <trkpt lat="53.0300037" lon="13.306746">
+        <name>W W301</name>
       </trkpt>
       <trkpt lat="53.0299934" lon="13.3068337">
       </trkpt>
@@ -487,6 +513,7 @@
       <trkpt lat="53.0316092" lon="13.3081153">
       </trkpt>
       <trkpt lat="53.0316109" lon="13.3081199">
+        <name>W W401</name>
       </trkpt>
     </trkseg>
   </trk>
@@ -494,6 +521,7 @@
     <name>Marschbahn</name>
     <trkseg>
       <trkpt lat="53.0328386" lon="13.3081091">
+        <name>W W402</name>
       </trkpt>
       <trkpt lat="53.0330565" lon="13.3078689">
       </trkpt>
@@ -541,6 +569,7 @@
       <trkpt lat="53.0330629" lon="13.3048032">
       </trkpt>
       <trkpt lat="53.0330105" lon="13.3047884">
+        <name>W W101</name>
       </trkpt>
     </trkseg>
   </trk>

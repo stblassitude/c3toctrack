@@ -9,7 +9,10 @@
     <tag k='railway' v='level_crossing' />
   </node>
   <node id='-25544' action='modify' visible='true' lat='53.0299781' lon='13.306552' />
-  <node id='-25545' action='modify' visible='true' lat='53.0300037' lon='13.306746' />
+  <node id='-25545' action='modify' visible='true' lat='53.0300037' lon='13.306746'>
+    <tag k='name' v='W W301' />
+    <tag k='railway' v='switch' />
+  </node>
   <node id='-25546' action='modify' visible='true' lat='53.0299934' lon='13.3068337' />
   <node id='-25547' action='modify' visible='true' lat='53.0299948' lon='13.3069318' />
   <node id='-25548' action='modify' visible='true' lat='53.0300125' lon='13.3070801' />
@@ -38,7 +41,10 @@
   <node id='-25559' action='modify' visible='true' lat='53.0315449' lon='13.308019' />
   <node id='-25560' action='modify' visible='true' lat='53.0315947' lon='13.3080757' />
   <node id='-25561' action='modify' visible='true' lat='53.0316092' lon='13.3081153' />
-  <node id='-25562' action='modify' visible='true' lat='53.0316109' lon='13.3081199' />
+  <node id='-25562' action='modify' visible='true' lat='53.0316109' lon='13.3081199'>
+    <tag k='name' v='W W401' />
+    <tag k='railway' v='switch' />
+  </node>
   <node id='-25563' action='modify' visible='true' lat='53.0316281' lon='13.3081803' />
   <node id='-25564' action='modify' visible='true' lat='53.0316383' lon='13.3082396'>
     <tag k='crossing:barrier' v='no' />
@@ -135,7 +141,10 @@
   <node id='-25622' action='modify' visible='true' lat='53.0327396' lon='13.3082722'>
     <tag k='railway' v='level_crossing' />
   </node>
-  <node id='-25623' action='modify' visible='true' lat='53.0328386' lon='13.3081091' />
+  <node id='-25623' action='modify' visible='true' lat='53.0328386' lon='13.3081091'>
+    <tag k='name' v='W W402' />
+    <tag k='railway' v='switch' />
+  </node>
   <node id='-25624' action='modify' visible='true' lat='53.0330565' lon='13.3078689' />
   <node id='-25625' action='modify' visible='true' lat='53.0331012' lon='13.3077828' />
   <node id='-25626' action='modify' visible='true' lat='53.0331457' lon='13.3076828' />
@@ -171,7 +180,10 @@
   <node id='-25642' action='modify' visible='true' lat='53.0331725' lon='13.3048431' />
   <node id='-25643' action='modify' visible='true' lat='53.0331199' lon='13.3048232' />
   <node id='-25644' action='modify' visible='true' lat='53.0330629' lon='13.3048032' />
-  <node id='-25645' action='modify' visible='true' lat='53.0330105' lon='13.3047884' />
+  <node id='-25645' action='modify' visible='true' lat='53.0330105' lon='13.3047884'>
+    <tag k='name' v='W W101' />
+    <tag k='railway' v='switch' />
+  </node>
   <node id='-25646' action='modify' visible='true' lat='53.0327037' lon='13.3047014'>
     <tag k='name' v='Bf Alte Werkstätten' />
     <tag k='railway' v='platform' />
@@ -222,7 +234,10 @@
     <tag k='railway' v='level_crossing' />
   </node>
   <node id='-25674' action='modify' visible='true' lat='53.0296422' lon='13.3032959' />
-  <node id='-25675' action='modify' visible='true' lat='53.0297119' lon='13.3034746' />
+  <node id='-25675' action='modify' visible='true' lat='53.0297119' lon='13.3034746'>
+    <tag k='name' v='W W201' />
+    <tag k='railway' v='switch' />
+  </node>
   <node id='-25676' action='modify' visible='true' lat='53.0297148' lon='13.3034969' />
   <node id='-25677' action='modify' visible='true' lat='53.0297397' lon='13.3035377' />
   <node id='-25678' action='modify' visible='true' lat='53.0297551' lon='13.3036012' />
