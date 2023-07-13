@@ -4,12 +4,15 @@ import json
 import logging
 import sys
 import time
+from shutil import copyfileobj
 
 import gpxpy
 import gpxpy.gpx
 import paho.mqtt.client as mqtt
+from atomicwrites import atomic_write
 
 from c3toctrack import Point, Track, makeWaypoint
+
 
 def gpx2tracks():
     gpx_file = open('data/trainlines.gpx', 'r')
@@ -69,6 +72,7 @@ def gpx2tracks():
         'waypoints': waypoints
     }
 
+
 class MqttClient():
     FIRST_RECONNECT_DELAY = 1
     RECONNECT_RATE = 2
@@ -85,11 +89,10 @@ class MqttClient():
         self.client.subscribe(topic)
 
     def on_connect(self, client, userdata, flags, rc):
-        print("Connected with result code "+str(rc))
-
+        print("Connected with result code " + str(rc))
 
     def on_message(self, client, userdata, msg):
-        print(msg.topic+" "+str(msg.payload))
+        print(msg.topic + " " + str(msg.payload))
 
     def on_disconnect(self, client, userdata, rc):
         logging.info("Disconnected with result code: %s", rc)
@@ -111,8 +114,11 @@ class MqttClient():
         logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
 
 
+with open('data/index.html', 'r') as input, atomic_write('webroot/index.html', overwrite=True) as output:
+    copyfileobj(input, output)
+
 tracks = gpx2tracks()
-with open('webroot/tracks.json', 'w', encoding="utf-8") as f:
+with atomic_write('webroot/tracks.json', overwrite=True) as f:
     print(json.dump(tracks, f, default=vars, sort_keys=True, indent=2))
 
 mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/#')
