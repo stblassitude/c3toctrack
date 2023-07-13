@@ -79,7 +79,9 @@ class MqttClient():
         self.client.username_pw_set(username, password)
         self.client.connect(hostname, 1883, 60)
         self.client.subscribe(topic)
-        self.trains = {}
+        self.trains = {
+            'trains': {}
+        }
 
     def on_connect(self, client, userdata, flags, rc):
         print("Connected with result code " + str(rc))
@@ -130,7 +132,7 @@ class MqttClient():
             print(f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
 
             print(f'JSON {pos}')
-            self.trains[name] = pos
+            self.trains['trains'][name] = pos
         with atomic_write('webroot/trains.json', overwrite=True, encoding='utf8') as f:
             os.fchmod(f.fileno(), 0o664)
             json.dump(self.trains, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)

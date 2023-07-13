@@ -28,17 +28,23 @@ entries:
 
 In addition to being attached to a point, the separate `waypoints` dict also contains all waypoints. The key is the
 trackmarker (again in meters). Each waypoint has these properties
+
 * type: one of:
-  * Bf: Bahnhof, or station, 
-  * Bü: Bahnübergang, or level crossing, 
-  * Hp: Haltepunkt, or stop
-  * W: Weiche, or switch
+    * Bf: Bahnhof, or station,
+    * Bü: Bahnübergang, or level crossing,
+    * Hp: Haltepunkt, or stop
+    * W: Weiche, or switch
 * trackmarker: the linear position on the track, in meters
 * name: the name of the waypoint
 
 ## `trains.json`
 
-tbd
+There is one property `trains', which contains one property per train, named after the train. Each train has these
+properties:
+* `lat` and `lon` GPS position
+* `sat`: number of satellites reported by the receiver, can be used to gauge accuracy of the fix
+* `speed`: in km/h
+* `trackmarker`: in meters, relative to the track.
 
 # Setting Up
 
