@@ -90,7 +90,7 @@ class MqttClient():
             pos = json.loads(msg.payload.decode('utf-8'))
             print(pos)
             self.trains[name] = pos
-        with atomic_write('webroot/train.json', overwrite=True, encoding='utf8') as f:
+        with atomic_write('webroot/trains.json', overwrite=True, encoding='utf8') as f:
             os.fchmod(f.fileno(), 0o664)
             print(json.dump(self.trains, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2))
 
