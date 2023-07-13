@@ -1,0 +1,543 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gpx version="1.1" creator="JOSM GPX export" xmlns="http://www.topografix.com/GPX/1/1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <time>2023-07-12T07:47:13.287291Z</time>
+    <bounds minlat="53.0296179" minlon="13.3028658" maxlat="53.0335194" maxlon="13.3125267"/>
+  </metadata>
+  <wpt lat="53.02988483176" lon="13.30619800674">
+    <name>Bf LOC</name>
+  </wpt>
+  <wpt lat="53.03154707988" lon="13.30459123789">
+    <name>Hp Marktplatz</name>
+  </wpt>
+  <wpt lat="53.0301421" lon="13.3055668">
+  </wpt>
+  <wpt lat="53.0327439" lon="13.3081381">
+  </wpt>
+  <wpt lat="53.0321393" lon="13.3082149">
+  </wpt>
+  <wpt lat="53.0296214" lon="13.3032052">
+  </wpt>
+  <wpt lat="53.0299581" lon="13.3031146">
+  </wpt>
+  <wpt lat="53.0301346" lon="13.3035626">
+    <name>Hp Dampfmaschine</name>
+  </wpt>
+  <wpt lat="53.0304101" lon="13.3040806">
+  </wpt>
+  <wpt lat="53.0305331" lon="13.3042594">
+    <name>Hp Himmel</name>
+  </wpt>
+  <wpt lat="53.0321498" lon="13.3046545">
+  </wpt>
+  <wpt lat="53.0327037" lon="13.3047014">
+    <name>Bf Alte Werkstätten</name>
+  </wpt>
+  <wpt lat="53.0332046" lon="13.3048743">
+    <name>Bü Moorweg</name>
+  </wpt>
+  <wpt lat="53.0335" lon="13.3052835">
+    <name>Hp Chillfloor</name>
+  </wpt>
+  <wpt lat="53.0334932" lon="13.3054988">
+  </wpt>
+  <wpt lat="53.0333952" lon="13.3058469">
+    <name>Hp Spielplatz</name>
+  </wpt>
+  <wpt lat="53.0333483" lon="13.3061952">
+  </wpt>
+  <wpt lat="53.0327396" lon="13.3082722">
+  </wpt>
+  <wpt lat="53.0326941" lon="13.3083846">
+  </wpt>
+  <wpt lat="53.032671" lon="13.3086889">
+  </wpt>
+  <wpt lat="53.0325578" lon="13.3102927">
+  </wpt>
+  <wpt lat="53.0321216" lon="13.3110081">
+    <name>Hp Am Jachthafen</name>
+  </wpt>
+  <wpt lat="53.0307966" lon="13.3118159">
+    <name>Bf Hafen</name>
+  </wpt>
+  <wpt lat="53.0311336" lon="13.31055">
+    <name>Hp Einkaufszentrum</name>
+  </wpt>
+  <wpt lat="53.0312342" lon="13.3105646">
+  </wpt>
+  <wpt lat="53.0315292" lon="13.3101987">
+  </wpt>
+  <wpt lat="53.0315524" lon="13.3099152">
+  </wpt>
+  <wpt lat="53.0315926" lon="13.309283">
+  </wpt>
+  <wpt lat="53.0316219" lon="13.3089487">
+    <name>Hp Ziegeleimuseum</name>
+  </wpt>
+  <wpt lat="53.0316383" lon="13.3082396">
+  </wpt>
+  <wpt lat="53.031476" lon="13.3079697">
+    <name>Hp Fnord-Bahnhof</name>
+  </wpt>
+  <wpt lat="53.0312623" lon="13.3079405">
+  </wpt>
+  <wpt lat="53.0302453" lon="13.3076655">
+    <name>Hp Alte Kugelmühle</name>
+  </wpt>
+  <wpt lat="53.0302041" lon="13.3076041">
+    <name>Bü Schrankenposten Laumann</name>
+  </wpt>
+  <wpt lat="53.0297844" lon="13.3058035">
+  </wpt>
+  <trk>
+    <name>Berliner Außenring</name>
+    <trkseg>
+      <trkpt lat="53.0316109" lon="13.3081199">
+      </trkpt>
+      <trkpt lat="53.0316281" lon="13.3081803">
+      </trkpt>
+      <trkpt lat="53.0316383" lon="13.3082396">
+      </trkpt>
+      <trkpt lat="53.0316219" lon="13.3089487">
+        <name>Hp Ziegeleimuseum</name>
+      </trkpt>
+      <trkpt lat="53.0315926" lon="13.309283">
+      </trkpt>
+      <trkpt lat="53.0315524" lon="13.3099152">
+      </trkpt>
+      <trkpt lat="53.0315292" lon="13.3101987">
+      </trkpt>
+      <trkpt lat="53.0315206" lon="13.3102813">
+      </trkpt>
+      <trkpt lat="53.0315081" lon="13.3103516">
+      </trkpt>
+      <trkpt lat="53.0314864" lon="13.3104242">
+      </trkpt>
+      <trkpt lat="53.0314582" lon="13.3104854">
+      </trkpt>
+      <trkpt lat="53.0314294" lon="13.3105217">
+      </trkpt>
+      <trkpt lat="53.0314002" lon="13.3105446">
+      </trkpt>
+      <trkpt lat="53.0313611" lon="13.3105615">
+      </trkpt>
+      <trkpt lat="53.0313198" lon="13.3105682">
+      </trkpt>
+      <trkpt lat="53.0312342" lon="13.3105646">
+      </trkpt>
+      <trkpt lat="53.0311336" lon="13.31055">
+        <name>Hp Einkaufszentrum</name>
+      </trkpt>
+      <trkpt lat="53.0311079" lon="13.3105563">
+      </trkpt>
+      <trkpt lat="53.0310176" lon="13.3105912">
+      </trkpt>
+      <trkpt lat="53.0309753" lon="13.3106162">
+      </trkpt>
+      <trkpt lat="53.0309544" lon="13.3106336">
+      </trkpt>
+      <trkpt lat="53.0309393" lon="13.3106511">
+      </trkpt>
+      <trkpt lat="53.0309181" lon="13.3106767">
+      </trkpt>
+      <trkpt lat="53.0309001" lon="13.3107053">
+      </trkpt>
+      <trkpt lat="53.0308831" lon="13.310737">
+      </trkpt>
+      <trkpt lat="53.03087" lon="13.3107706">
+      </trkpt>
+      <trkpt lat="53.0308555" lon="13.3108207">
+      </trkpt>
+      <trkpt lat="53.0308459" lon="13.310881">
+      </trkpt>
+      <trkpt lat="53.0307966" lon="13.3118159">
+        <name>Bf Hafen</name>
+      </trkpt>
+      <trkpt lat="53.0307906" lon="13.3119105">
+      </trkpt>
+      <trkpt lat="53.0307706" lon="13.3120115">
+      </trkpt>
+      <trkpt lat="53.0307559" lon="13.3122814">
+      </trkpt>
+      <trkpt lat="53.0307519" lon="13.312365">
+      </trkpt>
+      <trkpt lat="53.0307525" lon="13.3124314">
+      </trkpt>
+      <trkpt lat="53.0307656" lon="13.3124752">
+      </trkpt>
+      <trkpt lat="53.0308067" lon="13.3125209">
+      </trkpt>
+      <trkpt lat="53.0308525" lon="13.3125267">
+      </trkpt>
+      <trkpt lat="53.0308914" lon="13.3125092">
+      </trkpt>
+      <trkpt lat="53.0309628" lon="13.3124117">
+      </trkpt>
+      <trkpt lat="53.0310102" lon="13.312374">
+      </trkpt>
+      <trkpt lat="53.0311512" lon="13.31228">
+      </trkpt>
+      <trkpt lat="53.0313081" lon="13.3122212">
+      </trkpt>
+      <trkpt lat="53.031978" lon="13.3119737">
+      </trkpt>
+      <trkpt lat="53.0320248" lon="13.3119361">
+      </trkpt>
+      <trkpt lat="53.032055" lon="13.3118882">
+      </trkpt>
+      <trkpt lat="53.032074" lon="13.3118114">
+      </trkpt>
+      <trkpt lat="53.0321216" lon="13.3110081">
+        <name>Hp Am Jachthafen</name>
+      </trkpt>
+      <trkpt lat="53.0321433" lon="13.3108874">
+      </trkpt>
+      <trkpt lat="53.0321617" lon="13.3108416">
+      </trkpt>
+      <trkpt lat="53.0322167" lon="13.3107494">
+      </trkpt>
+      <trkpt lat="53.0322474" lon="13.3107178">
+      </trkpt>
+      <trkpt lat="53.0322938" lon="13.310685">
+      </trkpt>
+      <trkpt lat="53.0323716" lon="13.3106272">
+      </trkpt>
+      <trkpt lat="53.0324434" lon="13.3105397">
+      </trkpt>
+      <trkpt lat="53.0324972" lon="13.3104459">
+      </trkpt>
+      <trkpt lat="53.0325341" lon="13.3103656">
+      </trkpt>
+      <trkpt lat="53.0325578" lon="13.3102927">
+      </trkpt>
+      <trkpt lat="53.0325805" lon="13.3101524">
+      </trkpt>
+      <trkpt lat="53.032671" lon="13.3086889">
+      </trkpt>
+      <trkpt lat="53.0326941" lon="13.3083846">
+      </trkpt>
+      <trkpt lat="53.0327396" lon="13.3082722">
+      </trkpt>
+      <trkpt lat="53.0328386" lon="13.3081091">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Y-Trasse</name>
+    <trkseg>
+      <trkpt lat="53.0316109" lon="13.3081199">
+      </trkpt>
+      <trkpt lat="53.0316316" lon="13.3081582">
+      </trkpt>
+      <trkpt lat="53.0316465" lon="13.308181">
+      </trkpt>
+      <trkpt lat="53.0316828" lon="13.3081991">
+      </trkpt>
+      <trkpt lat="53.0317691" lon="13.3081917">
+      </trkpt>
+      <trkpt lat="53.0321393" lon="13.3082149">
+      </trkpt>
+      <trkpt lat="53.032378" lon="13.3082112">
+      </trkpt>
+      <trkpt lat="53.0325087" lon="13.3081904">
+      </trkpt>
+      <trkpt lat="53.0326305" lon="13.308173">
+      </trkpt>
+      <trkpt lat="53.0327439" lon="13.3081381">
+      </trkpt>
+      <trkpt lat="53.0328386" lon="13.3081091">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Gotthardbahn</name>
+    <trkseg>
+      <trkpt lat="53.0297119" lon="13.3034746">
+      </trkpt>
+      <trkpt lat="53.0298176" lon="13.3035405">
+      </trkpt>
+      <trkpt lat="53.0298828" lon="13.3035596">
+      </trkpt>
+      <trkpt lat="53.0300003" lon="13.303573">
+      </trkpt>
+      <trkpt lat="53.0300759" lon="13.303582">
+      </trkpt>
+      <trkpt lat="53.030119" lon="13.3036001">
+      </trkpt>
+      <trkpt lat="53.0301346" lon="13.3036171">
+      </trkpt>
+      <trkpt lat="53.0301599" lon="13.3036509">
+      </trkpt>
+      <trkpt lat="53.0301953" lon="13.3037372">
+      </trkpt>
+      <trkpt lat="53.0302114" lon="13.3038003">
+      </trkpt>
+      <trkpt lat="53.0302133" lon="13.3038573">
+      </trkpt>
+      <trkpt lat="53.0302082" lon="13.3040846">
+      </trkpt>
+      <trkpt lat="53.0302045" lon="13.3041852">
+      </trkpt>
+      <trkpt lat="53.0301611" lon="13.3052421">
+      </trkpt>
+      <trkpt lat="53.0301534" lon="13.3054234">
+      </trkpt>
+      <trkpt lat="53.0301421" lon="13.3055668">
+      </trkpt>
+      <trkpt lat="53.0301305" lon="13.3057128">
+      </trkpt>
+      <trkpt lat="53.0300952" lon="13.3060746">
+      </trkpt>
+      <trkpt lat="53.0300248" lon="13.3066257">
+      </trkpt>
+      <trkpt lat="53.0300037" lon="13.306746">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Werkstatt</name>
+    <trkseg>
+      <trkpt lat="53.0330105" lon="13.3047884">
+      </trkpt>
+      <trkpt lat="53.0330661" lon="13.3047706">
+      </trkpt>
+      <trkpt lat="53.0331056" lon="13.3047489">
+      </trkpt>
+      <trkpt lat="53.0331313" lon="13.3046893">
+      </trkpt>
+      <trkpt lat="53.0331406" lon="13.3045986">
+      </trkpt>
+      <trkpt lat="53.0331332" lon="13.3045289">
+      </trkpt>
+      <trkpt lat="53.033082" lon="13.3044267">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Werkstatt</name>
+    <trkseg>
+      <trkpt lat="53.033082" lon="13.3044267">
+      </trkpt>
+      <trkpt lat="53.0324616" lon="13.3043548">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Gotthard-Basistunnel</name>
+    <trkseg>
+      <trkpt lat="53.02973" lon="13.3038134">
+      </trkpt>
+      <trkpt lat="53.0296925" lon="13.3049527">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Rollbahn</name>
+    <trkseg>
+      <trkpt lat="53.0330105" lon="13.3047884">
+      </trkpt>
+      <trkpt lat="53.0327037" lon="13.3047014">
+        <name>Bf Alte Werkstätten</name>
+      </trkpt>
+      <trkpt lat="53.0326501" lon="13.3046863">
+      </trkpt>
+      <trkpt lat="53.0324862" lon="13.304693">
+      </trkpt>
+      <trkpt lat="53.0321651" lon="13.3046562">
+      </trkpt>
+      <trkpt lat="53.0321498" lon="13.3046545">
+      </trkpt>
+      <trkpt lat="53.0320776" lon="13.3046474">
+      </trkpt>
+      <trkpt lat="53.0319052" lon="13.3046297">
+      </trkpt>
+      <trkpt lat="53.03154707988" lon="13.30459123789">
+        <name>Hp Marktplatz</name>
+      </trkpt>
+      <trkpt lat="53.0308769" lon="13.3045158">
+      </trkpt>
+      <trkpt lat="53.0306626" lon="13.3043655">
+      </trkpt>
+      <trkpt lat="53.0306245" lon="13.3043388">
+      </trkpt>
+      <trkpt lat="53.0305331" lon="13.3042594">
+        <name>Hp Himmel</name>
+      </trkpt>
+      <trkpt lat="53.0304101" lon="13.3040806">
+      </trkpt>
+      <trkpt lat="53.0301346" lon="13.3035626">
+        <name>Hp Dampfmaschine</name>
+      </trkpt>
+      <trkpt lat="53.0299581" lon="13.3031146">
+      </trkpt>
+      <trkpt lat="53.0299013" lon="13.3029871">
+      </trkpt>
+      <trkpt lat="53.0298618" lon="13.3029189">
+      </trkpt>
+      <trkpt lat="53.0298328" lon="13.3028873">
+      </trkpt>
+      <trkpt lat="53.0298087" lon="13.3028712">
+      </trkpt>
+      <trkpt lat="53.0297818" lon="13.3028658">
+      </trkpt>
+      <trkpt lat="53.0297519" lon="13.3028695">
+      </trkpt>
+      <trkpt lat="53.029722" lon="13.3028876">
+      </trkpt>
+      <trkpt lat="53.0296945" lon="13.3029147">
+      </trkpt>
+      <trkpt lat="53.0296755" lon="13.3029401">
+      </trkpt>
+      <trkpt lat="53.0296561" lon="13.3029792">
+      </trkpt>
+      <trkpt lat="53.0296418" lon="13.3030165">
+      </trkpt>
+      <trkpt lat="53.0296251" lon="13.3030782">
+      </trkpt>
+      <trkpt lat="53.0296179" lon="13.3031442">
+      </trkpt>
+      <trkpt lat="53.0296214" lon="13.3032052">
+      </trkpt>
+      <trkpt lat="53.0296422" lon="13.3032959">
+      </trkpt>
+      <trkpt lat="53.0297119" lon="13.3034746">
+      </trkpt>
+      <trkpt lat="53.0297148" lon="13.3034969">
+      </trkpt>
+      <trkpt lat="53.0297397" lon="13.3035377">
+      </trkpt>
+      <trkpt lat="53.0297551" lon="13.3036012">
+      </trkpt>
+      <trkpt lat="53.029756" lon="13.3036483">
+      </trkpt>
+      <trkpt lat="53.0297501" lon="13.3036943">
+      </trkpt>
+      <trkpt lat="53.0297348" lon="13.303762">
+      </trkpt>
+      <trkpt lat="53.02973" lon="13.3038134">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Airolostrecke</name>
+    <trkseg>
+      <trkpt lat="53.0296925" lon="13.3049527">
+      </trkpt>
+      <trkpt lat="53.02968" lon="13.3052023">
+      </trkpt>
+      <trkpt lat="53.029683" lon="13.3053382">
+      </trkpt>
+      <trkpt lat="53.0296899" lon="13.3054015">
+      </trkpt>
+      <trkpt lat="53.0297844" lon="13.3058035">
+      </trkpt>
+      <trkpt lat="53.02988483176" lon="13.30619800674">
+        <name>Bf LOC</name>
+      </trkpt>
+      <trkpt lat="53.0299781" lon="13.306552">
+      </trkpt>
+      <trkpt lat="53.0300037" lon="13.306746">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Bäderbahn</name>
+    <trkseg>
+      <trkpt lat="53.0300037" lon="13.306746">
+      </trkpt>
+      <trkpt lat="53.0299934" lon="13.3068337">
+      </trkpt>
+      <trkpt lat="53.0299948" lon="13.3069318">
+      </trkpt>
+      <trkpt lat="53.0300125" lon="13.3070801">
+      </trkpt>
+      <trkpt lat="53.0300328" lon="13.3071435">
+      </trkpt>
+      <trkpt lat="53.0301065" lon="13.3073538">
+      </trkpt>
+      <trkpt lat="53.0301623" lon="13.307513">
+      </trkpt>
+      <trkpt lat="53.0302041" lon="13.3076041">
+        <name>Bü Schrankenposten Laumann</name>
+      </trkpt>
+      <trkpt lat="53.0302453" lon="13.3076655">
+        <name>Hp Alte Kugelmühle</name>
+      </trkpt>
+      <trkpt lat="53.0303237" lon="13.3077465">
+      </trkpt>
+      <trkpt lat="53.0304164" lon="13.3077901">
+      </trkpt>
+      <trkpt lat="53.0305097" lon="13.3078198">
+      </trkpt>
+      <trkpt lat="53.0312623" lon="13.3079405">
+      </trkpt>
+      <trkpt lat="53.031476" lon="13.3079697">
+        <name>Hp Fnord-Bahnhof</name>
+      </trkpt>
+      <trkpt lat="53.0315449" lon="13.308019">
+      </trkpt>
+      <trkpt lat="53.0315947" lon="13.3080757">
+      </trkpt>
+      <trkpt lat="53.0316092" lon="13.3081153">
+      </trkpt>
+      <trkpt lat="53.0316109" lon="13.3081199">
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Marschbahn</name>
+    <trkseg>
+      <trkpt lat="53.0328386" lon="13.3081091">
+      </trkpt>
+      <trkpt lat="53.0330565" lon="13.3078689">
+      </trkpt>
+      <trkpt lat="53.0331012" lon="13.3077828">
+      </trkpt>
+      <trkpt lat="53.0331457" lon="13.3076828">
+      </trkpt>
+      <trkpt lat="53.0331708" lon="13.3075885">
+      </trkpt>
+      <trkpt lat="53.0333118" lon="13.3064959">
+      </trkpt>
+      <trkpt lat="53.0333483" lon="13.3061952">
+      </trkpt>
+      <trkpt lat="53.0333952" lon="13.3058469">
+        <name>Hp Spielplatz</name>
+      </trkpt>
+      <trkpt lat="53.0334224" lon="13.3056778">
+      </trkpt>
+      <trkpt lat="53.0334563" lon="13.3055726">
+      </trkpt>
+      <trkpt lat="53.0334932" lon="13.3054988">
+      </trkpt>
+      <trkpt lat="53.0335087" lon="13.3054472">
+      </trkpt>
+      <trkpt lat="53.0335194" lon="13.3053529">
+      </trkpt>
+      <trkpt lat="53.0335" lon="13.3052835">
+        <name>Hp Chillfloor</name>
+      </trkpt>
+      <trkpt lat="53.0334846" lon="13.3052518">
+      </trkpt>
+      <trkpt lat="53.0334686" lon="13.3052172">
+      </trkpt>
+      <trkpt lat="53.0334371" lon="13.305145">
+      </trkpt>
+      <trkpt lat="53.0332837" lon="13.3049275">
+      </trkpt>
+      <trkpt lat="53.0332046" lon="13.3048743">
+        <name>Bü Moorweg</name>
+      </trkpt>
+      <trkpt lat="53.0331725" lon="13.3048431">
+      </trkpt>
+      <trkpt lat="53.0331199" lon="13.3048232">
+      </trkpt>
+      <trkpt lat="53.0330629" lon="13.3048032">
+      </trkpt>
+      <trkpt lat="53.0330105" lon="13.3047884">
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

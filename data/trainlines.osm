@@ -1,0 +1,543 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' generator='JOSM'>
+  <node id='-25539' action='modify' visible='true' lat='53.0296925' lon='13.3049527' />
+  <node id='-25540' action='modify' visible='true' lat='53.02968' lon='13.3052023' />
+  <node id='-25541' action='modify' visible='true' lat='53.029683' lon='13.3053382' />
+  <node id='-25542' action='modify' visible='true' lat='53.0296899' lon='13.3054015' />
+  <node id='-25543' action='modify' visible='true' lat='53.0297844' lon='13.3058035'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25544' action='modify' visible='true' lat='53.0299781' lon='13.306552' />
+  <node id='-25545' action='modify' visible='true' lat='53.0300037' lon='13.306746' />
+  <node id='-25546' action='modify' visible='true' lat='53.0299934' lon='13.3068337' />
+  <node id='-25547' action='modify' visible='true' lat='53.0299948' lon='13.3069318' />
+  <node id='-25548' action='modify' visible='true' lat='53.0300125' lon='13.3070801' />
+  <node id='-25549' action='modify' visible='true' lat='53.0300328' lon='13.3071435' />
+  <node id='-25550' action='modify' visible='true' lat='53.0301065' lon='13.3073538' />
+  <node id='-25551' action='modify' visible='true' lat='53.0301623' lon='13.307513' />
+  <node id='-25552' action='modify' visible='true' lat='53.0302041' lon='13.3076041'>
+    <tag k='name' v='Bü Schrankenposten Laumann' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25553' action='modify' visible='true' lat='53.0302453' lon='13.3076655'>
+    <tag k='name' v='Hp Alte Kugelmühle' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25554' action='modify' visible='true' lat='53.0303237' lon='13.3077465' />
+  <node id='-25555' action='modify' visible='true' lat='53.0304164' lon='13.3077901' />
+  <node id='-25556' action='modify' visible='true' lat='53.0305097' lon='13.3078198' />
+  <node id='-25557' action='modify' visible='true' lat='53.0312623' lon='13.3079405'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25558' action='modify' visible='true' lat='53.031476' lon='13.3079697'>
+    <tag k='name' v='Hp Fnord-Bahnhof' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25559' action='modify' visible='true' lat='53.0315449' lon='13.308019' />
+  <node id='-25560' action='modify' visible='true' lat='53.0315947' lon='13.3080757' />
+  <node id='-25561' action='modify' visible='true' lat='53.0316092' lon='13.3081153' />
+  <node id='-25562' action='modify' visible='true' lat='53.0316109' lon='13.3081199' />
+  <node id='-25563' action='modify' visible='true' lat='53.0316281' lon='13.3081803' />
+  <node id='-25564' action='modify' visible='true' lat='53.0316383' lon='13.3082396'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25565' action='modify' visible='true' lat='53.0316219' lon='13.3089487'>
+    <tag k='name' v='Hp Ziegeleimuseum' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25566' action='modify' visible='true' lat='53.0315926' lon='13.309283'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25567' action='modify' visible='true' lat='53.0315524' lon='13.3099152'>
+    <tag k='barrier' v='gate' />
+  </node>
+  <node id='-25568' action='modify' visible='true' lat='53.0315292' lon='13.3101987'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25569' action='modify' visible='true' lat='53.0315206' lon='13.3102813' />
+  <node id='-25570' action='modify' visible='true' lat='53.0315081' lon='13.3103516' />
+  <node id='-25571' action='modify' visible='true' lat='53.0314864' lon='13.3104242' />
+  <node id='-25572' action='modify' visible='true' lat='53.0314582' lon='13.3104854' />
+  <node id='-25573' action='modify' visible='true' lat='53.0314294' lon='13.3105217' />
+  <node id='-25574' action='modify' visible='true' lat='53.0314002' lon='13.3105446' />
+  <node id='-25575' action='modify' visible='true' lat='53.0313611' lon='13.3105615' />
+  <node id='-25576' action='modify' visible='true' lat='53.0313198' lon='13.3105682' />
+  <node id='-25577' action='modify' visible='true' lat='53.0312342' lon='13.3105646'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25578' action='modify' visible='true' lat='53.0311336' lon='13.31055'>
+    <tag k='name' v='Hp Einkaufszentrum' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25579' action='modify' visible='true' lat='53.0311079' lon='13.3105563' />
+  <node id='-25580' action='modify' visible='true' lat='53.0310176' lon='13.3105912' />
+  <node id='-25581' action='modify' visible='true' lat='53.0309753' lon='13.3106162' />
+  <node id='-25582' action='modify' visible='true' lat='53.0309544' lon='13.3106336' />
+  <node id='-25583' action='modify' visible='true' lat='53.0309393' lon='13.3106511' />
+  <node id='-25584' action='modify' visible='true' lat='53.0309181' lon='13.3106767' />
+  <node id='-25585' action='modify' visible='true' lat='53.0309001' lon='13.3107053' />
+  <node id='-25586' action='modify' visible='true' lat='53.0308831' lon='13.310737' />
+  <node id='-25587' action='modify' visible='true' lat='53.03087' lon='13.3107706' />
+  <node id='-25588' action='modify' visible='true' lat='53.0308555' lon='13.3108207' />
+  <node id='-25589' action='modify' visible='true' lat='53.0308459' lon='13.310881' />
+  <node id='-25590' action='modify' visible='true' lat='53.0307966' lon='13.3118159'>
+    <tag k='name' v='Bf Hafen' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25591' action='modify' visible='true' lat='53.0307906' lon='13.3119105' />
+  <node id='-25592' action='modify' visible='true' lat='53.0307706' lon='13.3120115' />
+  <node id='-25593' action='modify' visible='true' lat='53.0307559' lon='13.3122814' />
+  <node id='-25594' action='modify' visible='true' lat='53.0307519' lon='13.312365' />
+  <node id='-25595' action='modify' visible='true' lat='53.0307525' lon='13.3124314' />
+  <node id='-25596' action='modify' visible='true' lat='53.0307656' lon='13.3124752' />
+  <node id='-25597' action='modify' visible='true' lat='53.0308067' lon='13.3125209' />
+  <node id='-25598' action='modify' visible='true' lat='53.0308525' lon='13.3125267' />
+  <node id='-25599' action='modify' visible='true' lat='53.0308914' lon='13.3125092' />
+  <node id='-25600' action='modify' visible='true' lat='53.0309628' lon='13.3124117' />
+  <node id='-25601' action='modify' visible='true' lat='53.0310102' lon='13.312374' />
+  <node id='-25602' action='modify' visible='true' lat='53.0311512' lon='13.31228' />
+  <node id='-25603' action='modify' visible='true' lat='53.0313081' lon='13.3122212' />
+  <node id='-25604' action='modify' visible='true' lat='53.031978' lon='13.3119737' />
+  <node id='-25605' action='modify' visible='true' lat='53.0320248' lon='13.3119361' />
+  <node id='-25606' action='modify' visible='true' lat='53.032055' lon='13.3118882' />
+  <node id='-25607' action='modify' visible='true' lat='53.032074' lon='13.3118114' />
+  <node id='-25608' action='modify' visible='true' lat='53.0321216' lon='13.3110081'>
+    <tag k='name' v='Hp Am Jachthafen' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25609' action='modify' visible='true' lat='53.0321433' lon='13.3108874' />
+  <node id='-25610' action='modify' visible='true' lat='53.0321617' lon='13.3108416' />
+  <node id='-25611' action='modify' visible='true' lat='53.0322167' lon='13.3107494' />
+  <node id='-25612' action='modify' visible='true' lat='53.0322474' lon='13.3107178' />
+  <node id='-25613' action='modify' visible='true' lat='53.0322938' lon='13.310685' />
+  <node id='-25614' action='modify' visible='true' lat='53.0323716' lon='13.3106272' />
+  <node id='-25615' action='modify' visible='true' lat='53.0324434' lon='13.3105397' />
+  <node id='-25616' action='modify' visible='true' lat='53.0324972' lon='13.3104459' />
+  <node id='-25617' action='modify' visible='true' lat='53.0325341' lon='13.3103656' />
+  <node id='-25618' action='modify' visible='true' lat='53.0325578' lon='13.3102927'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25619' action='modify' visible='true' lat='53.0325805' lon='13.3101524' />
+  <node id='-25620' action='modify' visible='true' lat='53.032671' lon='13.3086889'>
+    <tag k='barrier' v='gate' />
+  </node>
+  <node id='-25621' action='modify' visible='true' lat='53.0326941' lon='13.3083846'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25622' action='modify' visible='true' lat='53.0327396' lon='13.3082722'>
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25623' action='modify' visible='true' lat='53.0328386' lon='13.3081091' />
+  <node id='-25624' action='modify' visible='true' lat='53.0330565' lon='13.3078689' />
+  <node id='-25625' action='modify' visible='true' lat='53.0331012' lon='13.3077828' />
+  <node id='-25626' action='modify' visible='true' lat='53.0331457' lon='13.3076828' />
+  <node id='-25627' action='modify' visible='true' lat='53.0331708' lon='13.3075885' />
+  <node id='-25628' action='modify' visible='true' lat='53.0333118' lon='13.3064959' />
+  <node id='-25629' action='modify' visible='true' lat='53.0333483' lon='13.3061952'>
+    <tag k='railway' v='crossing' />
+  </node>
+  <node id='-25630' action='modify' visible='true' lat='53.0333952' lon='13.3058469'>
+    <tag k='name' v='Hp Spielplatz' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25631' action='modify' visible='true' lat='53.0334224' lon='13.3056778' />
+  <node id='-25632' action='modify' visible='true' lat='53.0334563' lon='13.3055726' />
+  <node id='-25633' action='modify' visible='true' lat='53.0334932' lon='13.3054988'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25634' action='modify' visible='true' lat='53.0335087' lon='13.3054472' />
+  <node id='-25635' action='modify' visible='true' lat='53.0335194' lon='13.3053529' />
+  <node id='-25636' action='modify' visible='true' lat='53.0335' lon='13.3052835'>
+    <tag k='name' v='Hp Chillfloor' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25637' action='modify' visible='true' lat='53.0334846' lon='13.3052518' />
+  <node id='-25638' action='modify' visible='true' lat='53.0334686' lon='13.3052172' />
+  <node id='-25639' action='modify' visible='true' lat='53.0334371' lon='13.305145' />
+  <node id='-25640' action='modify' visible='true' lat='53.0332837' lon='13.3049275' />
+  <node id='-25641' action='modify' visible='true' lat='53.0332046' lon='13.3048743'>
+    <tag k='name' v='Bü Moorweg' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25642' action='modify' visible='true' lat='53.0331725' lon='13.3048431' />
+  <node id='-25643' action='modify' visible='true' lat='53.0331199' lon='13.3048232' />
+  <node id='-25644' action='modify' visible='true' lat='53.0330629' lon='13.3048032' />
+  <node id='-25645' action='modify' visible='true' lat='53.0330105' lon='13.3047884' />
+  <node id='-25646' action='modify' visible='true' lat='53.0327037' lon='13.3047014'>
+    <tag k='name' v='Bf Alte Werkstätten' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25647' action='modify' visible='true' lat='53.0326501' lon='13.3046863' />
+  <node id='-25648' action='modify' visible='true' lat='53.0324862' lon='13.304693' />
+  <node id='-25649' action='modify' visible='true' lat='53.0321651' lon='13.3046562' />
+  <node id='-25650' action='modify' visible='true' lat='53.0321498' lon='13.3046545'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25651' action='modify' visible='true' lat='53.0320776' lon='13.3046474' />
+  <node id='-25652' action='modify' visible='true' lat='53.0319052' lon='13.3046297' />
+  <node id='-25653' action='modify' visible='true' lat='53.0308769' lon='13.3045158' />
+  <node id='-25654' action='modify' visible='true' lat='53.0306626' lon='13.3043655' />
+  <node id='-25655' action='modify' visible='true' lat='53.0306245' lon='13.3043388' />
+  <node id='-25656' action='modify' visible='true' lat='53.0305331' lon='13.3042594'>
+    <tag k='name' v='Hp Himmel' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25657' action='modify' visible='true' lat='53.0304101' lon='13.3040806'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25658' action='modify' visible='true' lat='53.0301346' lon='13.3035626'>
+    <tag k='name' v='Hp Dampfmaschine' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25659' action='modify' visible='true' lat='53.0299581' lon='13.3031146'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25660' action='modify' visible='true' lat='53.0299013' lon='13.3029871' />
+  <node id='-25661' action='modify' visible='true' lat='53.0298618' lon='13.3029189' />
+  <node id='-25662' action='modify' visible='true' lat='53.0298328' lon='13.3028873' />
+  <node id='-25663' action='modify' visible='true' lat='53.0298087' lon='13.3028712' />
+  <node id='-25664' action='modify' visible='true' lat='53.0297818' lon='13.3028658' />
+  <node id='-25665' action='modify' visible='true' lat='53.0297519' lon='13.3028695' />
+  <node id='-25666' action='modify' visible='true' lat='53.029722' lon='13.3028876' />
+  <node id='-25667' action='modify' visible='true' lat='53.0296945' lon='13.3029147' />
+  <node id='-25668' action='modify' visible='true' lat='53.0296755' lon='13.3029401' />
+  <node id='-25669' action='modify' visible='true' lat='53.0296561' lon='13.3029792' />
+  <node id='-25670' action='modify' visible='true' lat='53.0296418' lon='13.3030165' />
+  <node id='-25671' action='modify' visible='true' lat='53.0296251' lon='13.3030782' />
+  <node id='-25672' action='modify' visible='true' lat='53.0296179' lon='13.3031442' />
+  <node id='-25673' action='modify' visible='true' lat='53.0296214' lon='13.3032052'>
+    <tag k='crossing:barrier' v='no' />
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25674' action='modify' visible='true' lat='53.0296422' lon='13.3032959' />
+  <node id='-25675' action='modify' visible='true' lat='53.0297119' lon='13.3034746' />
+  <node id='-25676' action='modify' visible='true' lat='53.0297148' lon='13.3034969' />
+  <node id='-25677' action='modify' visible='true' lat='53.0297397' lon='13.3035377' />
+  <node id='-25678' action='modify' visible='true' lat='53.0297551' lon='13.3036012' />
+  <node id='-25679' action='modify' visible='true' lat='53.029756' lon='13.3036483' />
+  <node id='-25680' action='modify' visible='true' lat='53.0297501' lon='13.3036943' />
+  <node id='-25681' action='modify' visible='true' lat='53.0297348' lon='13.303762' />
+  <node id='-25682' action='modify' visible='true' lat='53.02973' lon='13.3038134' />
+  <node id='-25683' action='modify' visible='true' lat='53.0316316' lon='13.3081582' />
+  <node id='-25684' action='modify' visible='true' lat='53.0316465' lon='13.308181' />
+  <node id='-25685' action='modify' visible='true' lat='53.0316828' lon='13.3081991' />
+  <node id='-25686' action='modify' visible='true' lat='53.0317691' lon='13.3081917' />
+  <node id='-25687' action='modify' visible='true' lat='53.0321393' lon='13.3082149'>
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25688' action='modify' visible='true' lat='53.032378' lon='13.3082112' />
+  <node id='-25689' action='modify' visible='true' lat='53.0325087' lon='13.3081904' />
+  <node id='-25690' action='modify' visible='true' lat='53.0326305' lon='13.308173' />
+  <node id='-25691' action='modify' visible='true' lat='53.0327439' lon='13.3081381'>
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25692' action='modify' visible='true' lat='53.0298176' lon='13.3035405' />
+  <node id='-25693' action='modify' visible='true' lat='53.0298828' lon='13.3035596' />
+  <node id='-25694' action='modify' visible='true' lat='53.0300003' lon='13.303573' />
+  <node id='-25695' action='modify' visible='true' lat='53.0300759' lon='13.303582' />
+  <node id='-25696' action='modify' visible='true' lat='53.030119' lon='13.3036001' />
+  <node id='-25697' action='modify' visible='true' lat='53.0301346' lon='13.3036171' />
+  <node id='-25698' action='modify' visible='true' lat='53.0301599' lon='13.3036509' />
+  <node id='-25699' action='modify' visible='true' lat='53.0301953' lon='13.3037372' />
+  <node id='-25700' action='modify' visible='true' lat='53.0302114' lon='13.3038003' />
+  <node id='-25701' action='modify' visible='true' lat='53.0302133' lon='13.3038573' />
+  <node id='-25702' action='modify' visible='true' lat='53.0302082' lon='13.3040846' />
+  <node id='-25703' action='modify' visible='true' lat='53.0302045' lon='13.3041852' />
+  <node id='-25704' action='modify' visible='true' lat='53.0301611' lon='13.3052421' />
+  <node id='-25705' action='modify' visible='true' lat='53.0301534' lon='13.3054234' />
+  <node id='-25706' action='modify' visible='true' lat='53.0301421' lon='13.3055668'>
+    <tag k='railway' v='level_crossing' />
+  </node>
+  <node id='-25707' action='modify' visible='true' lat='53.0301305' lon='13.3057128' />
+  <node id='-25708' action='modify' visible='true' lat='53.0300952' lon='13.3060746' />
+  <node id='-25709' action='modify' visible='true' lat='53.0300248' lon='13.3066257' />
+  <node id='-25710' action='modify' visible='true' lat='53.0330661' lon='13.3047706' />
+  <node id='-25711' action='modify' visible='true' lat='53.0331056' lon='13.3047489' />
+  <node id='-25712' action='modify' visible='true' lat='53.0331313' lon='13.3046893' />
+  <node id='-25713' action='modify' visible='true' lat='53.0331406' lon='13.3045986' />
+  <node id='-25714' action='modify' visible='true' lat='53.0331332' lon='13.3045289' />
+  <node id='-25715' action='modify' visible='true' lat='53.033082' lon='13.3044267' />
+  <node id='-25716' action='modify' visible='true' lat='53.0324616' lon='13.3043548' />
+  <node id='-25719' action='modify' visible='true' lat='53.02973' lon='13.3038134' />
+  <node id='-25720' action='modify' visible='true' lat='53.0296925' lon='13.3049527' />
+  <node id='-25923' action='modify' visible='true' lat='53.03154707988' lon='13.30459123789'>
+    <tag k='name' v='Hp Marktplatz' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-25985' action='modify' visible='true' lat='53.02988483176' lon='13.30619800674'>
+    <tag k='name' v='Bf LOC' />
+    <tag k='railway' v='platform' />
+  </node>
+  <way id='-960' action='modify' visible='true'>
+    <nd ref='-25562' />
+    <nd ref='-25563' />
+    <nd ref='-25564' />
+    <nd ref='-25565' />
+    <nd ref='-25566' />
+    <nd ref='-25567' />
+    <nd ref='-25568' />
+    <nd ref='-25569' />
+    <nd ref='-25570' />
+    <nd ref='-25571' />
+    <nd ref='-25572' />
+    <nd ref='-25573' />
+    <nd ref='-25574' />
+    <nd ref='-25575' />
+    <nd ref='-25576' />
+    <nd ref='-25577' />
+    <nd ref='-25578' />
+    <nd ref='-25579' />
+    <nd ref='-25580' />
+    <nd ref='-25581' />
+    <nd ref='-25582' />
+    <nd ref='-25583' />
+    <nd ref='-25584' />
+    <nd ref='-25585' />
+    <nd ref='-25586' />
+    <nd ref='-25587' />
+    <nd ref='-25588' />
+    <nd ref='-25589' />
+    <nd ref='-25590' />
+    <nd ref='-25591' />
+    <nd ref='-25592' />
+    <nd ref='-25593' />
+    <nd ref='-25594' />
+    <nd ref='-25595' />
+    <nd ref='-25596' />
+    <nd ref='-25597' />
+    <nd ref='-25598' />
+    <nd ref='-25599' />
+    <nd ref='-25600' />
+    <nd ref='-25601' />
+    <nd ref='-25602' />
+    <nd ref='-25603' />
+    <nd ref='-25604' />
+    <nd ref='-25605' />
+    <nd ref='-25606' />
+    <nd ref='-25607' />
+    <nd ref='-25608' />
+    <nd ref='-25609' />
+    <nd ref='-25610' />
+    <nd ref='-25611' />
+    <nd ref='-25612' />
+    <nd ref='-25613' />
+    <nd ref='-25614' />
+    <nd ref='-25615' />
+    <nd ref='-25616' />
+    <nd ref='-25617' />
+    <nd ref='-25618' />
+    <nd ref='-25619' />
+    <nd ref='-25620' />
+    <nd ref='-25621' />
+    <nd ref='-25622' />
+    <nd ref='-25623' />
+    <tag k='description' v='Ziegeleibahn' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Berliner Außenring' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-961' action='modify' visible='true'>
+    <nd ref='-25562' />
+    <nd ref='-25683' />
+    <nd ref='-25684' />
+    <nd ref='-25685' />
+    <nd ref='-25686' />
+    <nd ref='-25687' />
+    <nd ref='-25688' />
+    <nd ref='-25689' />
+    <nd ref='-25690' />
+    <nd ref='-25691' />
+    <nd ref='-25623' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Y-Trasse' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-962' action='modify' visible='true'>
+    <nd ref='-25675' />
+    <nd ref='-25692' />
+    <nd ref='-25693' />
+    <nd ref='-25694' />
+    <nd ref='-25695' />
+    <nd ref='-25696' />
+    <nd ref='-25697' />
+    <nd ref='-25698' />
+    <nd ref='-25699' />
+    <nd ref='-25700' />
+    <nd ref='-25701' />
+    <nd ref='-25702' />
+    <nd ref='-25703' />
+    <nd ref='-25704' />
+    <nd ref='-25705' />
+    <nd ref='-25706' />
+    <nd ref='-25707' />
+    <nd ref='-25708' />
+    <nd ref='-25709' />
+    <nd ref='-25545' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Gotthardbahn' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-963' action='modify' visible='true'>
+    <nd ref='-25645' />
+    <nd ref='-25710' />
+    <nd ref='-25711' />
+    <nd ref='-25712' />
+    <nd ref='-25713' />
+    <nd ref='-25714' />
+    <nd ref='-25715' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Werkstatt' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-964' action='modify' visible='true'>
+    <nd ref='-25715' />
+    <nd ref='-25716' />
+    <tag k='gauge' v='500;630' />
+    <tag k='layer' v='-1' />
+    <tag k='name' v='Werkstatt' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-968' action='modify' visible='true'>
+    <nd ref='-25719' />
+    <nd ref='-25720' />
+    <tag k='gauge' v='500' />
+    <tag k='layer' v='-1' />
+    <tag k='name' v='Gotthard-Basistunnel' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+    <tag k='tunnel' v='yes' />
+  </way>
+  <way id='-985' action='modify' visible='true'>
+    <nd ref='-25645' />
+    <nd ref='-25646' />
+    <nd ref='-25647' />
+    <nd ref='-25648' />
+    <nd ref='-25649' />
+    <nd ref='-25650' />
+    <nd ref='-25651' />
+    <nd ref='-25652' />
+    <nd ref='-25923' />
+    <nd ref='-25653' />
+    <nd ref='-25654' />
+    <nd ref='-25655' />
+    <nd ref='-25656' />
+    <nd ref='-25657' />
+    <nd ref='-25658' />
+    <nd ref='-25659' />
+    <nd ref='-25660' />
+    <nd ref='-25661' />
+    <nd ref='-25662' />
+    <nd ref='-25663' />
+    <nd ref='-25664' />
+    <nd ref='-25665' />
+    <nd ref='-25666' />
+    <nd ref='-25667' />
+    <nd ref='-25668' />
+    <nd ref='-25669' />
+    <nd ref='-25670' />
+    <nd ref='-25671' />
+    <nd ref='-25672' />
+    <nd ref='-25673' />
+    <nd ref='-25674' />
+    <nd ref='-25675' />
+    <nd ref='-25676' />
+    <nd ref='-25677' />
+    <nd ref='-25678' />
+    <nd ref='-25679' />
+    <nd ref='-25680' />
+    <nd ref='-25681' />
+    <nd ref='-25682' />
+    <tag k='description' v='Ziegeleibahn' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Rollbahn' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-999' action='modify' visible='true'>
+    <nd ref='-25539' />
+    <nd ref='-25540' />
+    <nd ref='-25541' />
+    <nd ref='-25542' />
+    <nd ref='-25543' />
+    <nd ref='-25985' />
+    <nd ref='-25544' />
+    <nd ref='-25545' />
+    <tag k='description' v='Ziegeleibahn' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Airolostrecke' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-1011' action='modify' visible='true'>
+    <nd ref='-25545' />
+    <nd ref='-25546' />
+    <nd ref='-25547' />
+    <nd ref='-25548' />
+    <nd ref='-25549' />
+    <nd ref='-25550' />
+    <nd ref='-25551' />
+    <nd ref='-25552' />
+    <nd ref='-25553' />
+    <nd ref='-25554' />
+    <nd ref='-25555' />
+    <nd ref='-25556' />
+    <nd ref='-25557' />
+    <nd ref='-25558' />
+    <nd ref='-25559' />
+    <nd ref='-25560' />
+    <nd ref='-25561' />
+    <nd ref='-25562' />
+    <tag k='description' v='Ziegeleibahn' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Bäderbahn' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+  <way id='-1015' action='modify' visible='true'>
+    <nd ref='-25623' />
+    <nd ref='-25624' />
+    <nd ref='-25625' />
+    <nd ref='-25626' />
+    <nd ref='-25627' />
+    <nd ref='-25628' />
+    <nd ref='-25629' />
+    <nd ref='-25630' />
+    <nd ref='-25631' />
+    <nd ref='-25632' />
+    <nd ref='-25633' />
+    <nd ref='-25634' />
+    <nd ref='-25635' />
+    <nd ref='-25636' />
+    <nd ref='-25637' />
+    <nd ref='-25638' />
+    <nd ref='-25639' />
+    <nd ref='-25640' />
+    <nd ref='-25641' />
+    <nd ref='-25642' />
+    <nd ref='-25643' />
+    <nd ref='-25644' />
+    <nd ref='-25645' />
+    <tag k='description' v='Ziegeleibahn' />
+    <tag k='gauge' v='500' />
+    <tag k='name' v='Marschbahn' />
+    <tag k='railway' v='narrow_gauge' />
+    <tag k='railway:preserved' v='yes' />
+  </way>
+</osm>
