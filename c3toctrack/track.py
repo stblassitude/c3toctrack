@@ -11,19 +11,19 @@ class Track:
     def __init__(self, name):
         self.name = name
         self.points = []
-        self.trackmiles = []
+        self.trackmarker = []
         self.distances = []
 
     def add(self, point:Point):
         if len(self.points) > 0:
             previous = self.points[len(self.points)-1]
-            if len(self.trackmiles) > 0:
-                tm = self.trackmiles[len(self.trackmiles)-1]
+            if len(self.trackmarker) > 0:
+                tm = self.trackmarker[len(self.trackmarker)-1]
             else:
                 tm = 0
             lon = abs(previous.lon - point.lon) / self.meter_per_degree_lon
             lat = abs(previous.lat - point.lat) / self.meter_per_degree_lat
             d = sqrt(lon*lon+lat*lat)
             self.distances.append(d)
-            self.trackmiles.append(tm+d)
+            self.trackmarker.append(tm+d)
         self.points.append(point)
