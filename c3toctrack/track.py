@@ -10,8 +10,6 @@ class Track:
     """
     A track combines multiple Points.
     """
-    meter_per_degree_lon = 1.4910240353067286e-05
-    meter_per_degree_lat = 8.989572096375368e-06
 
     def __init__(self, name):
         self.name = name
@@ -22,9 +20,7 @@ class Track:
         if len(self.points) > 0:
             previous = self.points[len(self.points) - 1]
             start = previous.trackmarker
-            lon = abs(previous.lon - point.lon) / self.meter_per_degree_lon
-            lat = abs(previous.lat - point.lat) / self.meter_per_degree_lat
-            point.distance = sqrt(lon * lon + lat * lat)
+            point.distance = Point.distance(previous, point)
         point.trackmarker = start + point.distance
         if name is not None:
             point.waypoint = makeWaypoint(point.lat, point.lon, int(point.trackmarker), name)

@@ -12,15 +12,17 @@ import gpxpy.gpx
 import paho.mqtt.client as mqtt
 from atomicwrites import atomic_write
 
-from c3toctrack import Track
+from c3toctrack import Track, Point
 
 
 def gpx2tracks():
+    global tracks, waypoints
+    tracks = {}
+    waypoints = {}
+
     gpx_file = open('data/trainlines.gpx', 'r')
 
     gpx = gpxpy.parse(gpx_file)
-
-    tracks = {}
 
     for track in gpx.tracks:
         # print(f'Track {track.name}')
@@ -52,7 +54,6 @@ def gpx2tracks():
             for point in segment.points:
                 t.add(point.latitude, point.longitude, point.name, start)
 
-    waypoints = {}
     for n, t in tracks.items():
         for point in t.points:
             if point.waypoint is not None:
@@ -84,15 +85,55 @@ class MqttClient():
         print("Connected with result code " + str(rc))
 
     def on_message(self, client, userdata, msg):
-        print(msg.topic + " " + str(msg.payload))
+        print(f'Message received for topic "{msg.topic}": "{msg.payload}"')
         (_, _, name, kind) = msg.topic.split('/')
         if kind == 'pos':
             pos = json.loads(msg.payload.decode('utf-8'))
-            print(pos)
+            point = Point(pos['lat'], pos['lon'])
+            distance = 1e36
+            closest = None
+            second = None
+            trackmarker = 0
+            for track in tracks['tracks'].values():
+                for i in range(0, len(track.points)):
+                    d = Point.distance(point, track.points[i])
+                    if d < distance:
+                        distance = d
+                        closest = track.points[i]
+                        dp = 1e36
+                        dn = 1e36
+                        if i > 0:
+                            dp = Point.distance(point, track.points[i-1])
+                        if i < len(track.points)-1:
+                            dn = Point.distance(point, track.points[i+1])
+                        if dp < dn:
+                            second = track.points[i-1]
+                        else:
+                            second = track.points[i+1]
+            if second is None:
+                pos['trackmarker'] = closest.trackmarker
+            else:
+                ab = Point.distance(closest, second)
+                bc = Point.distance(second, point)
+                ca = Point.distance(point, closest)
+                if bc == 0:
+                    pos['trackmarker'] = second.trackmarker
+                elif ca == 0:
+                    pos['trackmarker'] = closest.trackmarker
+                else:
+                    d = Point.nearest_distance(ab, bc, ca)
+                    if second.trackmarker > closest.trackmarker:
+                        pos['trackmarker'] = closest.trackmarker + d
+                    else:
+                        pos['trackmarker'] = closest.trackmarker - d
+            pos['trackmarker'] = int(pos['trackmarker'])
+            print(f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
+
+            print(f'JSON {pos}')
             self.trains[name] = pos
         with atomic_write('webroot/trains.json', overwrite=True, encoding='utf8') as f:
             os.fchmod(f.fileno(), 0o664)
-            print(json.dump(self.trains, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2))
+            json.dump(self.trains, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)
 
 
     def on_disconnect(self, client, userdata, rc):
@@ -122,7 +163,7 @@ with open('data/index.html', 'r', encoding='utf8') as input, atomic_write('webro
 tracks = gpx2tracks()
 with atomic_write('webroot/tracks.json', overwrite=True, encoding='utf8') as f:
     os.fchmod(f.fileno(), 0o664)
-    print(json.dump(tracks, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2))
+    json.dump(tracks, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)
 
 mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/train/#')
 mqttClient.client.loop_forever()
