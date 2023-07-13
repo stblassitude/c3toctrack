@@ -1,6 +1,7 @@
 # c3toctrack
 
-Tracker Infrastructure for the c3toc trains at #cccamp23
+Tracker Infrastructure for the c3toc trains at #cccamp23. See [c3toc.de](https://c3toc.de)
+and [api.c3toc.de](https://api.c3toc.de).
 
 # JSON API
 
@@ -41,6 +42,7 @@ trackmarker (again in meters). Each waypoint has these properties
 
 There is one property `trains', which contains one property per train, named after the train. Each train has these
 properties:
+
 * `lat` and `lon` GPS position
 * `sat`: number of satellites reported by the receiver, can be used to gauge accuracy of the fix
 * `speed`: in km/h
