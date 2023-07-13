@@ -95,6 +95,7 @@ class MqttClient():
             distance = 1e36
             closest = None
             second = None
+            trackname = None
             trackmarker = 0
             for track in tracks['tracks'].values():
                 for i in range(0, len(track.points)):
@@ -102,6 +103,7 @@ class MqttClient():
                     if d < distance:
                         distance = d
                         closest = track.points[i]
+                        trackname = track.name
                         dp = 1e36
                         dn = 1e36
                         if i > 0:
@@ -129,6 +131,7 @@ class MqttClient():
                     else:
                         pos['trackmarker'] = closest.trackmarker - d
             pos['trackmarker'] = int(pos['trackmarker'])
+            pos['trackname'] = trackname
             print(f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
 
             print(f'JSON {pos}')

@@ -45,6 +45,7 @@ properties:
 * `sat`: number of satellites reported by the receiver, can be used to gauge accuracy of the fix
 * `speed`: in km/h
 * `trackmarker`: in meters, relative to the track.
+* `trackname`: name of the track segment the train is on.
 
 # Setting Up
 
