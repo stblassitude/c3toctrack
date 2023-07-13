@@ -18,7 +18,7 @@ class Track:
         self.points = []
 
     def add(self, lat: float, lon: float, name: str, start: float):
-        point = Point(lat, lon, name)
+        point = Point(lat, lon)
         if len(self.points) > 0:
             previous = self.points[len(self.points) - 1]
             start = previous.trackmarker
@@ -26,6 +26,6 @@ class Track:
             lat = abs(previous.lat - point.lat) / self.meter_per_degree_lat
             point.distance = sqrt(lon * lon + lat * lat)
         point.trackmarker = start + point.distance
-        if point.name is not None:
-            point.waypoint = makeWaypoint(point.lat, point.lon, int(point.trackmarker), point.name)
+        if name is not None:
+            point.waypoint = makeWaypoint(point.lat, point.lon, int(point.trackmarker), name)
         self.points.append(point)
