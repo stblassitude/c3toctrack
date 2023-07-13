@@ -32,13 +32,21 @@
         iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
-    var marker = L.marker([53.03171, 13.30597], {icon: lok}).addTo(map);
+    var markers = {};
 
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     xhr.onload = (e) => {
         let r = xhr.response;
-        marker.setLatLng(new L.latLng(r.trains.demo.lat, r.trains.demo.lon));
+        for (var name in r.trains) {
+            train = r.trains[name]
+            var marker = markers[name]
+            if (marker === undefined) {
+                marker = L.marker([53.03171, 13.30597], {icon: lok}).addTo(map);
+                markers[name] = marker
+            }
+            marker.setLatLng(new L.latLng(train.lat, train.lon));
+        }
         setTimeout(() => {
             // xhr = new XMLHttpRequest();
             xhr.open("GET", "https://api.c3toc.de/trains.json");
