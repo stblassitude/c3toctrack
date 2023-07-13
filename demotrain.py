@@ -76,13 +76,11 @@ while True:
         print(f'stopping at {waypoint["name"]}')
         msg['speed'] = 0
         mqttClient.client.publish('c3toc/train/demo/pos', json.dumps(msg))
-        # time.sleep(30)
-        msg['speed'] = 3.6
-        mqttClient.client.publish('c3toc/train/demo/pos', json.dumps(msg))
+        time.sleep(30)
     else:
         mqttClient.client.publish('c3toc/train/demo/pos', json.dumps(msg))
     pos += 1
-    if pos > len(points):
+    if pos >= len(points):
         pos = 0
         trackmarker = 0
     else:

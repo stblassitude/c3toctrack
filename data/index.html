@@ -1,13 +1,46 @@
 <html>
 <head>
     <title>c3toc API</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
 </head>
 <body>
 <p>This site provides some APIs for the train tracker at #cccamp23. See <a href="https://c3toc.de">c3toc.de</a> and <a href="https://github.com/stblassitude/c3toctrack">github.com/stblassitude/c3toctrack</a> for more information.</p>
+
+<div id="map" style="height: 500px"></div>
+
 <ul>
     <li><a href="tracks.json">tracks.json</a>: information about the tracks</li>
     <li><a href="trains.json">trains.json</a>: information about the trains, in particular, their current position</li>
 </ul>
+
+<script defer>
+    var map = L.map('map').setView([53.03171, 13.30597], 16);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    var marker = L.marker([53.03171, 13.30597]).addTo(map);
+
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.onload = (e) => {
+        let r = xhr.response;
+        marker.setLatLng(new L.latLng(r.trains.demo.lat, r.trains.demo.lon));
+        setTimeout(() => {
+            // xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.c3toc.de/trains.json");
+            xhr.send();
+        }, 1000);
+    }
+    xhr.open("GET", "https://api.c3toc.de/trains.json");
+    xhr.send();
+
+</script>
 
 </body>
 </html>
