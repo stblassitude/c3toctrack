@@ -65,7 +65,7 @@ def gpx2tracks():
     #     print(f'{trackmarker/1000:1.3f}  {waypoints[trackmarker].typecode()}    {waypoints[trackmarker].name}')
 
     return {
-        'tracks': tracks,
+        # 'tracks': tracks,
         'waypoints': waypoints
     }
 
@@ -112,7 +112,7 @@ class MqttClient():
 
 
 tracks = gpx2tracks()
-with open('tracks.json', 'w', encoding="utf-8") as f:
+with open('webroot/tracks.json', 'w', encoding="utf-8") as f:
     print(json.dump(tracks, f, default=vars, sort_keys=True, indent=2))
 
 mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/#')
