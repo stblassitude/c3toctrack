@@ -31,23 +31,26 @@ def gpx2tracks():
         else:
             t = Track(track.name)
             tracks[track.name] = t
+        match track.name:
+            case 'Airolostrecke':
+                start = 563
+            case 'Bäderbahn':
+                start = 690
+            case 'Gotthard-Basistunnel':
+                start = 486
+            case 'Gotthardbahn':
+                start = 462
+            case 'Y-Trasse':
+                start = 918
+            case 'Berliner Außenring':
+                start = 918
+            case 'Marschbahn':
+                start = 1704
+            case _:
+                start = 0
         for segment in track.segments:
-            if track.name == 'Airolostrecke':
-                t.trackmarker.append(563)
-            if track.name == 'Bäderbahn':
-                t.trackmarker.append(690)
-            if track.name == 'Gotthard-Basistunnel':
-                t.trackmarker.append(486)
-            if track.name == 'Gotthardbahn':
-                t.trackmarker.append(462)
-            if track.name == 'Y-Trasse':
-                t.trackmarker.append(918)
-            if track.name == 'Berliner Außenring':
-                t.trackmarker.append(918)
-            if track.name == 'Marschbahn':
-                t.trackmarker.append(1704)
             for point in segment.points:
-                t.add(Point(point.latitude, point.longitude, point.name))
+                t.add(point.latitude, point.longitude, point.name, start)
                 # if point.name is not None:
                 #     print(f'  {point.latitude:2.5f}, {point.longitude:2.5f}: {point.name}')
                 # else:
@@ -55,11 +58,14 @@ def gpx2tracks():
 
     waypoints = {}
     for n, t in tracks.items():
-        # print(f'{t.name}: {len(t.points)}')
-        for p, tm in zip(t.points, t.trackmarker):
-            if p.name is not None:
-                wp = makeWaypoint(p.lat, p.lon, tm, p.name)
-                waypoints[wp.trackmarker] = wp
+        for point in t.points:
+            if point.waypoint is not None:
+                waypoints[point.waypoint.trackmarker] = point.waypoint
+        # # print(f'{t.name}: {len(t.points)}')
+        # for p, tm in zip(t.points, t.trackmarker):
+        #     if p.name is not None:
+        #         wp = makeWaypoint(p.lat, p.lon, tm, p.name)
+        #         waypoints[wp.trackmarker] = wp
             #     print(f'  {p.lat:0.5f}/{p.lon:0.5f}: {tm/1000: 4.3f} {p.name}')
             # else:
             #     print(f'  {p.lat:0.5f}/{p.lon:0.5f}: {tm/1000: 4.3f} ')
@@ -69,7 +75,7 @@ def gpx2tracks():
     #     print(f'{trackmarker/1000:1.3f}  {waypoints[trackmarker].typecode()}    {waypoints[trackmarker].name}')
 
     return {
-        # 'tracks': tracks,
+        'tracks': tracks,
         'waypoints': waypoints
     }
 
@@ -115,14 +121,14 @@ class MqttClient():
         logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
 
 
-with open('data/index.html', 'r') as input, atomic_write('webroot/index.html', overwrite=True) as output:
+with open('data/index.html', 'r', encoding='utf8') as input, atomic_write('webroot/index.html', overwrite=True, encoding='utf8') as output:
     os.fchmod(output.fileno(), 0o664)
     copyfileobj(input, output)
 
 tracks = gpx2tracks()
-with atomic_write('webroot/tracks.json', overwrite=True) as f:
+with atomic_write('webroot/tracks.json', overwrite=True, encoding='utf8') as f:
     os.fchmod(f.fileno(), 0o664)
-    print(json.dump(tracks, f, default=vars, sort_keys=True, indent=2))
+    print(json.dump(tracks, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2))
 
 mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/#')
 mqttClient.client.loop_forever()

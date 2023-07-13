@@ -229,7 +229,10 @@
   <node id='-25679' action='modify' visible='true' lat='53.029756' lon='13.3036483' />
   <node id='-25680' action='modify' visible='true' lat='53.0297501' lon='13.3036943' />
   <node id='-25681' action='modify' visible='true' lat='53.0297348' lon='13.303762' />
-  <node id='-25682' action='modify' visible='true' lat='53.02973' lon='13.3038134' />
+  <node id='-25682' action='modify' visible='true' lat='53.02973' lon='13.3038134'>
+    <tag k='name' v='Hp Tunnel' />
+    <tag k='railway' v='platform' />
+  </node>
   <node id='-25683' action='modify' visible='true' lat='53.0316316' lon='13.3081582' />
   <node id='-25684' action='modify' visible='true' lat='53.0316465' lon='13.308181' />
   <node id='-25685' action='modify' visible='true' lat='53.0316828' lon='13.3081991' />
