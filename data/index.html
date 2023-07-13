@@ -25,7 +25,14 @@
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    var marker = L.marker([53.03171, 13.30597]).addTo(map);
+    var lok = L.icon({
+        iconUrl: 'lok.png',
+
+        iconSize:     [25, 25], // size of the icon
+        iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var marker = L.marker([53.03171, 13.30597], {icon: lok}).addTo(map);
 
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';

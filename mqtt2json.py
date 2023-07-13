@@ -15,6 +15,11 @@ from atomicwrites import atomic_write
 from c3toctrack import Track, Point
 
 
+def copy(dst:str, src:str):
+    with open(src, 'rb') as input, open(dst, 'wb') as output:
+        os.fchmod(output.fileno(), 0o664)
+        copyfileobj(input, output)
+
 def gpx2tracks():
     global tracks, waypoints
     tracks = {}
@@ -161,9 +166,8 @@ class MqttClient():
         logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
 
 
-with open('data/index.html', 'r', encoding='utf8') as input, atomic_write('webroot/index.html', overwrite=True, encoding='utf8') as output:
-    os.fchmod(output.fileno(), 0o664)
-    copyfileobj(input, output)
+for f in ('index.html', 'lok.png'):
+    copy(f'webroot/{f}', f'data/{f}')
 
 tracks = gpx2tracks()
 with atomic_write('webroot/tracks.json', overwrite=True, encoding='utf8') as f:
