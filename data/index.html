@@ -30,14 +30,14 @@
         iconUrl: 'lok.png',
 
         iconSize: [25, 25], // size of the icon
-        iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
+        iconAnchor: [12, 25], // point of the icon which will correspond to marker's location
         popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
     var station = L.icon({
         iconUrl: 'station.png',
 
         iconSize: [25, 25], // size of the icon
-        iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
+        iconAnchor: [12, 25], // point of the icon which will correspond to marker's location
         popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
     var markers = {};
@@ -52,7 +52,7 @@
                 marker = L.marker([waypoint.lat, waypoint.lon], {icon: station})
                     .bindTooltip(waypoint.name, {
                         direction: 'auto',
-                        offset: [12, 0],
+                        offset: [12, -12],
                         permanent: false,
                     })
                     .addTo(map);
@@ -76,7 +76,6 @@
                 })
                     .bindTooltip(name, {
                         direction: 'bottom',
-                        offset: [0, 12],
                         permanent: true,
                     })
                     .addTo(map);
