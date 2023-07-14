@@ -3,16 +3,17 @@
     <title>c3toc API</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossorigin=""/>
+          crossOrigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
+            crossOrigin=""></script>
 </head>
 <body>
 <div id="map" style="height: 600px; width: 800px; float:right"></div>
 
 <h1>APIs for the train tracker at #cccamp23</h1>
-<p>See <a href="https://c3toc.de">c3toc.de</a> and <a href="https://github.com/stblassitude/c3toctrack">github.com/stblassitude/c3toctrack</a> for more information.</p>
+<p>See <a href="https://c3toc.de">c3toc.de</a> and <a href="https://github.com/stblassitude/c3toctrack">github.com/stblassitude/c3toctrack</a>
+    for more information.</p>
 
 <ul>
     <li><a href="tracks.json">tracks.json</a>: information about the tracks</li>
@@ -28,11 +29,38 @@
     var lok = L.icon({
         iconUrl: 'lok.png',
 
-        iconSize:     [25, 25], // size of the icon
-        iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize: [25, 25], // size of the icon
+        iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
+        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var station = L.icon({
+        iconUrl: 'station.png',
+
+        iconSize: [25, 25], // size of the icon
+        iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
+        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
     var markers = {};
+
+    var xhrStations = new XMLHttpRequest();
+    xhrStations.responseType = 'json';
+    xhrStations.onload = (e) => {
+        let r = xhrStations.response;
+        for (var name in r.waypoints) {
+            waypoint = r.waypoints[name];
+            if (waypoint.type == "Hp" || waypoint.type == "Bf") {
+                marker = L.marker([waypoint.lat, waypoint.lon], {icon: station})
+                    .bindTooltip(waypoint.name, {
+                        direction: 'auto',
+                        offset: [12, 0],
+                        permanent: false,
+                    })
+                    .addTo(map);
+            }
+        }
+    }
+    xhrStations.open("GET", "https://api.c3toc.de/tracks.json");
+    xhrStations.send();
 
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
@@ -42,7 +70,16 @@
             train = r.trains[name]
             var marker = markers[name]
             if (marker === undefined) {
-                marker = L.marker([53.03171, 13.30597], {icon: lok}).addTo(map);
+                marker = L.marker([53.03171, 13.30597], {
+                    icon: lok,
+                    zIndexOffset: 1000
+                })
+                    .bindTooltip(name, {
+                        direction: 'bottom',
+                        offset: [0, 12],
+                        permanent: true,
+                    })
+                    .addTo(map);
                 markers[name] = marker
             }
             marker.setLatLng(new L.latLng(train.lat, train.lon));
