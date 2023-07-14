@@ -5,6 +5,7 @@ import logging
 import os
 import sys
 import time
+from datetime import datetime, timedelta
 from shutil import copyfileobj
 
 import gpxpy
@@ -15,10 +16,11 @@ from atomicwrites import atomic_write
 from c3toctrack import Track, Point
 
 
-def copy(dst:str, src:str):
+def copy(dst: str, src: str):
     with open(src, 'rb') as input, open(dst, 'wb') as output:
         os.fchmod(output.fileno(), 0o664)
         copyfileobj(input, output)
+
 
 def gpx2tracks():
     global tracks, waypoints
@@ -112,13 +114,13 @@ class MqttClient():
                         dp = 1e36
                         dn = 1e36
                         if i > 0:
-                            dp = Point.distance(point, track.points[i-1])
-                        if i < len(track.points)-1:
-                            dn = Point.distance(point, track.points[i+1])
+                            dp = Point.distance(point, track.points[i - 1])
+                        if i < len(track.points) - 1:
+                            dn = Point.distance(point, track.points[i + 1])
                         if dp < dn:
-                            second = track.points[i-1]
+                            second = track.points[i - 1]
                         else:
-                            second = track.points[i+1]
+                            second = track.points[i + 1]
             if second is None:
                 pos['trackmarker'] = closest.trackmarker
             else:
@@ -137,14 +139,18 @@ class MqttClient():
                         pos['trackmarker'] = closest.trackmarker - d
             pos['trackmarker'] = int(pos['trackmarker'])
             pos['trackname'] = trackname
-            print(f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
+            pos['timestamp'] = datetime.now().isoformat()
+            print(
+                f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
 
             print(f'JSON {pos}')
             self.trains['trains'][name] = pos
+            self.update_trains()
+
+    def update_trains(self):
         with atomic_write('webroot/trains.json', overwrite=True, encoding='utf8') as f:
             os.fchmod(f.fileno(), 0o664)
             json.dump(self.trains, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)
-
 
     def on_disconnect(self, client, userdata, rc):
         logging.info("Disconnected with result code: %s", rc)
@@ -175,4 +181,17 @@ with atomic_write('webroot/tracks.json', overwrite=True, encoding='utf8') as f:
     json.dump(tracks, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)
 
 mqttClient = MqttClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/train/#')
-mqttClient.client.loop_forever()
+mqttClient.client.loop_start()
+
+while True:
+    mod = False
+    for name in list(mqttClient.trains['trains'].keys()):
+        train = mqttClient.trains['trains'][name]
+        timestamp = datetime.fromisoformat(train['timestamp'])
+        if datetime.now() - timestamp > timedelta(minutes=10):
+            print(f'Dropping train {name} due to no more GPS fixes')
+            del mqttClient.trains['trains'][name]
+            mod = True
+    if mod:
+        mqttClient.update_trains()
+    time.sleep(1)
