@@ -5,7 +5,8 @@ and [api.c3toc.de](https://api.c3toc.de).
 
 # JSON API
 
-The python script `mqtt2json.py` generates two JSON files: `tracks.json` and `trains.json`.
+The python script `mqtt2json.py` generates four JSON files: `tracks.json`, `tracks-geo.json`, `trains.json`,
+and `trains-geo.json`.
 
 ## `tracks.json`
 
@@ -48,6 +49,12 @@ properties:
 * `speed`: in km/h
 * `trackmarker`: in meters, relative to the track.
 * `trackname`: name of the track segment the train is on.
+
+## GeoJson
+
+Both tracks and trains are also available in [GeoJson](https://geojson.org) format.
+
+The features have additional properties according to [simplestyle](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0).
 
 # Setting Up
 
