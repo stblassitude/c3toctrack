@@ -27,10 +27,10 @@ tracksmodel = TracksModel('data/trainlines.gpx', {
     'Marschbahn': 1704
 })
 tracksmodel.write_json('webroot/tracks.json')
-tracksmodel.write_geojson('webroot/tracks-geo.json')
+tracksmodel.write_geojson('webroot/tracks.geojson')
 
 mqttClient = MqttTrainReporterClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/train/#', tracksmodel,
-                                     'webroot/trains.json', 'webroot/trains-geo.json')
+                                     'webroot/trains.json', 'webroot/trains.geojson')
 mqttClient.client.loop_start()
 
 while True:
