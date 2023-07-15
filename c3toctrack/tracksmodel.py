@@ -69,13 +69,26 @@ class TracksModel:
             }
             match waypoint.type:
                 case 'Bf':
-                    properties['marker'] = 'rail'
+                    properties.update({
+                        'marker-symbol': 'rail',
+                        'marker-color': '#008'
+                    })
                 case 'Bü':
-                    properties['marker'] = 'fence'
+                    properties.update({
+                        'marker-symbol': 'fence',
+                        'marker-color': '#880'
+                    })
                 case 'Hp':
-                    properties['marker'] = 'rail'
+                    properties.update({
+                        'marker-symbol': 'rail',
+                        'marker-color': '#008'
+                    })
+                    properties['marker-symbol'] = 'rail'
                 case 'W':
-                    properties['marker'] = 'cross'
+                    properties.update({
+                        'marker-symbol': 'cross',
+                        'marker-color': '#080'
+                    })
             features.append(
                 geojson.Feature(geometry=geojson.Point((waypoint.lon, waypoint.lat)), properties=properties))
         feature_collection = geojson.FeatureCollection(features)

@@ -101,9 +101,13 @@ class MqttTrainReporterClient:
         features = []
         for name, train in self.trains['trains'].items():
             properties = train.copy()
-            properties['name'] = name
-            properties['marker-symbol'] = 'rocket' # no loco in maki icon set
-            features.append(geojson.Feature(geometry=geojson.Point((train['lon'], train['lat'])), properties=properties))
+            properties.update({
+                'marker-symbol': 'rocket', # no good loco in Maki set
+                'marker-color': '#cc0',
+                'name': name,
+            })
+            features.append(
+                geojson.Feature(geometry=geojson.Point((train['lon'], train['lat'])), properties=properties))
         feature_collection = geojson.FeatureCollection(features)
 
         with atomic_write(self.trains_geojson, overwrite=True, encoding='utf8') as f:
