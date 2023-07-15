@@ -67,15 +67,15 @@ class TracksModel:
                 'title': waypoint.name,
                 'type': waypoint.type
             }
-            match waypoint:
+            match waypoint.type:
                 case 'Bf':
-                    properties['marker'] = 'stop'
+                    properties['marker'] = 'rail'
                 case 'Bü':
-                    properties['marker'] = 'level-crossing'
+                    properties['marker'] = 'fence'
                 case 'Hp':
-                    properties['marker'] = 'stop'
+                    properties['marker'] = 'rail'
                 case 'W':
-                    properties['marker'] = 'turnout'
+                    properties['marker'] = 'cross'
             features.append(
                 geojson.Feature(geometry=geojson.Point((waypoint.lon, waypoint.lat)), properties=properties))
         feature_collection = geojson.FeatureCollection(features)
