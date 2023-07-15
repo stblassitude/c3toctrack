@@ -172,7 +172,7 @@ class MqttClient():
         logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
 
 
-for f in ('index.html', 'lok.png', 'station.png'):
+for f in ('index.html', 'lok.png', 'map.html', 'station.png'):
     copy(f'webroot/{f}', f'data/{f}')
 
 tracks = gpx2tracks()
