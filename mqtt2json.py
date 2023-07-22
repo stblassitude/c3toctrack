@@ -14,7 +14,7 @@ def copy(dst: str, src: str):
         copyfileobj(input, output)
 
 
-for f in ('index.html', 'lok.png', 'map.html', 'station.png'):
+for f in ('index.html', 'lok.png', 'map.html', 'station.png', 'updatemap.js'):
     copy(f'webroot/{f}', f'data/{f}')
 
 tracksmodel = TracksModel('data/trainlines.gpx', {
