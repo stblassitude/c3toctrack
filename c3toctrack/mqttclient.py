@@ -47,7 +47,6 @@ class MqttTrainReporterClient:
             closest = None
             second = None
             trackname = None
-            trackmarker = 0
             for track in self.tracksmodel.tracks.values():
                 for i in range(0, len(track.points)):
                     d = Point.distance(point, track.points[i])
@@ -87,6 +86,15 @@ class MqttTrainReporterClient:
             print(
                 f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
 
+            if name in self.trains['trains']:
+                lastpos = self.trains['trains'][name]
+                lastpoint = Point(lastpos['lat'], lastpos['lon'])
+                if Point.distance(lastpoint, point) < 2:
+                    pos['dir'] = lastpos['dir']
+                else:
+                    pos['dir'] = lastpoint.angle(point)
+            else:
+                pos['dir'] = 0
             print(f'JSON {pos}')
             self.trains['trains'][name] = pos
             self.update_trains()

@@ -64,9 +64,11 @@ async function getTrains() {
                     permanent: true,
                 })
                 .addTo(map);
+            marker._icon.style[L.DomUtil.TRANSFORM+'Origin'] = 'center bottom';
             markers[name] = marker;
         }
         marker.setLatLng(new L.latLng(train.lat, train.lon));
+        marker._icon.style[L.DomUtil.TRANSFORM] += ' rotateZ(' + (train.dir+90) + 'deg)';
     }
     for (name in markersToRemove) {
         map.removeLayer(markers[name])

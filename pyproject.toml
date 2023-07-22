@@ -13,6 +13,9 @@ paho-mqtt = "^1.6.1"
 atomicwrites = "^1.4.1"
 geojson = "^3.0.1"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+
 
 [build-system]
 requires = ["poetry-core"]
