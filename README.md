@@ -49,7 +49,11 @@ properties:
 * `speed`: in km/h
 * `trackmarker`: in meters, relative to the track.
 * `trackname`: name of the track segment the train is on.
-* `next_stop`: details of the next stop the train will reach. Has `name`, `trackmarker` and `type` properties. 
+* `next_stop`: details of the next stop the train will reach, with these properties:
+  * `eta`: time in UTC when the train will arrive at this stop
+  * `name`
+  * `trackmarker`
+  * `type` 
 
 ## GeoJson
 

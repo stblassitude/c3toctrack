@@ -97,12 +97,18 @@ class MqttTrainReporterClient:
                 if Point.distance(lastpoint, point) < 2:
                     pos['dir'] = lastpos['dir']
                 else:
-                    pos['dir'] = lastpoint.angle(point)
+                    pos['dir'] = int(lastpoint.angle(point))
             else:
                 pos['dir'] = 0
             next_stop = self.find_next_stop(pos)
+            eta = None
+            if pos['speed'] > 0:
+                eta = (datetime.utcnow()
+                       + timedelta(seconds=int(abs(pos['trackmarker'] - next_stop.trackmarker) / (pos['speed'] / 3.6)))
+                       ).isoformat() + 'Z'
             if next_stop is not None:
                 pos['next_stop'] = {
+                    'eta': eta,
                     'name': next_stop.name,
                     'trackmaarker': next_stop.trackmarker,
                     'type': next_stop.type
