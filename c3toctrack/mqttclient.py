@@ -33,6 +33,11 @@ class MqttTrainReporterClient:
         self.tracksmodel = tracksmodel
         self.trains_json = trains_json
         self.trains_geojson = trains_geojson
+        self.waypoints = []
+        for trackmarker, point in sorted(tracksmodel.waypoints.items()):
+            if point.is_stop():
+                self.waypoints.append(point)
+
 
     def on_connect(self, client, userdata, flags, rc):
         print("Connected with result code " + str(rc))
@@ -95,10 +100,33 @@ class MqttTrainReporterClient:
                     pos['dir'] = lastpoint.angle(point)
             else:
                 pos['dir'] = 0
+            next_stop = self.find_next_stop(pos)
+            if next_stop is not None:
+                pos['next_stop'] = {
+                    'name': next_stop.name,
+                    'trackmaarker': next_stop.trackmarker,
+                    'type': next_stop.type
+                }
             print(f'JSON {pos}')
             self.trains['trains'][name] = pos
             self.update_trains()
             self.write_geojson()
+
+    def find_next_stop(self, pos: dict) -> 'Waypoint':
+        """
+        Given the trains current position on the track, find the next stop.
+        :return:
+        """
+        stop = None
+        # search for stops after current position
+        for waypoint in self.waypoints:
+            if waypoint.trackmarker > pos['trackmarker']:
+                stop = waypoint
+                break
+        if stop is None:
+            stop = self.waypoints[0]
+        return stop
+
 
     def update_trains(self):
         with atomic_write(self.trains_json, overwrite=True, encoding='utf8') as f:

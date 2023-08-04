@@ -17,6 +17,13 @@ class Waypoint:
         self.trackmarker = trackmarker
         self.type = "wp"
 
+    def is_stop(self):
+        """
+        Returns true if this waypoint is a stop
+        :return:
+        """
+        return self.type == "Hp" or self.type == "Bf"
+
 
 class LevelCrossing(Waypoint):
     """
