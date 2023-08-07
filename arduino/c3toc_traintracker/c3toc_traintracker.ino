@@ -191,9 +191,11 @@ void reconfigure() {
 
 
 void gpsAlive() {
-  while (Serial1.available())
-    gps.encode(Serial1.read());
-  delay(10);
+  for (;;) {
+    while (Serial1.available())
+      gps.encode(Serial1.read());
+    delay(10);
+  }
 }
 
 
