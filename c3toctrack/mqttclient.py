@@ -87,7 +87,11 @@ class MqttTrainReporterClient:
                         pos['trackmarker'] = closest.trackmarker - d
             pos['trackmarker'] = int(pos['trackmarker'])
             pos['trackname'] = trackname
-            pos['timestamp'] = datetime.now().isoformat()
+            if 'ts' in pos:
+                pos['timestamp'] = pos['ts']
+                del pos['ts']
+            else:
+                pos['timestamp'] = datetime.now().isoformat()
             print(
                 f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
 
