@@ -1,16 +1,18 @@
 #include <ArduinoMqttClient.h>
-#include <axp20x.h>
 #include <CoopTask.h>
 #include <EEPROM.h>
 #include <TinyGPS++.h>
 #include <WiFi.h>
 #include <WiFiManager.h>
 
+#include <XPowersLib.h>
+
 const int LED = 4;
 const int BUTTON = 38;
 
 TinyGPSPlus gps;
-AXP20X_Class axp;
+//XPowersPMU PMU;
+XPowersLibInterface *PMU = NULL;
 
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
@@ -117,7 +119,6 @@ void mqttAlive() {
     mqttClient.beginMessage(topic + "/" + mqttParam.user + "/status");
     mqttClient.print("alive");
     mqttClient.endMessage();
-    Serial.println("Sent alive");
 
     mqttClient.beginMessage(topic + "/" + mqttParam.user + "/pos");
     mqttClient.print("{\"lat\":");
@@ -128,9 +129,15 @@ void mqttAlive() {
     mqttClient.print(gps.satellites.value());
     mqttClient.print(",\"speed\":");
     mqttClient.print(gps.speed.kmph());
+    mqttClient.print(",\"Vbat\":");
+    mqttClient.print(PMU->getBattVoltage());
+    mqttClient.print(",\"Vbus\":");
+    mqttClient.print(PMU->getVbusVoltage());
+    mqttClient.print(",\"Vsys\":");
+    mqttClient.print(PMU->getSystemVoltage());
     mqttClient.print("}");
     mqttClient.endMessage();
-    Serial.println("Sent alive");
+    Serial.println("Sent MQTT messages");
 
     delay(10000);
   }
@@ -150,9 +157,23 @@ void reconfigure() {
   }
 }
 
+
+void power() {
+  while(1) {
+    uint32_t status = PMU->getIrqStatus();
+    // Serial.print("STATUS => HEX:");
+    // Serial.print(status, HEX);
+    // Serial.print(",\"Vbat\":");
+    // Serial.println(status, BIN);
+    PMU->clearIrqStatus();
+    delay(1000);
+  }
+}
+
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> heartbeatTask("heartbeat", heartbeat);
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> mqttAliveTask("mqttAlive", mqttAlive);
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> reconfigureTask("reconfigure", reconfigure);
+BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> powerTask("power", power);
 
 
 void wifiParamsUpdatedCallback() {
@@ -212,29 +233,112 @@ void setupWifi() {
   }
 }
 
+
+void setupPower() {
+ if (!PMU) {
+    PMU = new XPowersAXP2101(Wire);
+    if (PMU->init()) {
+      Serial.println("Detected AXP2101");
+    } else {
+      PMU = NULL;
+    }
+  }
+  if (!PMU) {
+    PMU = new XPowersAXP192(Wire);
+    if (PMU->init()) {
+      Serial.println("Detected AXP192");
+    } else {
+      PMU = NULL;
+    }
+  }
+  if (!PMU) {
+      Serial.println("No PMIC detected, stopping");
+      while (1) delay(1000);
+  }
+  Serial.print("AXP Chip ID: ");
+  Serial.println(PMU->getChipID());
+
+  // PMU->setVbusVoltageLimit(XPOWERS_AXP2101_VBUS_VOL_LIM_4V36);
+  // PMU->setVbusCurrentLimit(XPOWERS_AXP2101_VBUS_CUR_LIM_1500MA);
+  // PMU->setDC1Voltage(3300);
+  // PMU->disableDC2();
+  // PMU->enableDC3();
+  // PMU->enableDC4();
+  // PMU->enableDC5();
+  // PMU->enableALDO1();
+  // PMU->enableALDO2();
+  // PMU->enableALDO3();
+  // PMU->enableALDO4();
+  // PMU->enableBLDO1();
+  // PMU->enableBLDO2();
+  // PMU->enableCPUSLDO();
+  // PMU->enableDLDO1();
+  // PMU->enableDLDO2();
+
+  // PMU->disablePowerOutput(XPOWERS_DCDC2);
+  // PMU->disablePowerOutput(XPOWERS_DCDC3);
+  // PMU->disablePowerOutput(XPOWERS_DCDC4);
+  // PMU->disablePowerOutput(XPOWERS_DCDC5);
+  // PMU->disablePowerOutput(XPOWERS_ALDO1);
+  // PMU->disablePowerOutput(XPOWERS_ALDO4);
+  // PMU->disablePowerOutput(XPOWERS_BLDO1);
+  // PMU->disablePowerOutput(XPOWERS_BLDO2);
+  // PMU->disablePowerOutput(XPOWERS_DLDO1);
+  // PMU->disablePowerOutput(XPOWERS_DLDO2);
+  // PMU->setPowerChannelVoltage(XPOWERS_VBACKUP, 3300);
+  // PMU->enablePowerOutput(XPOWERS_VBACKUP);
+
+  // LoRa VDD 3300mV
+  // PMU->setPowerChannelVoltage(XPOWERS_ALDO2, 3300);
+  // PMU->enablePowerOutput(XPOWERS_ALDO2);
+
+  // GNSS VDD 3300mV
+  // PMU->setPowerChannelVoltage(XPOWERS_ALDO3, 3300);
+  // PMU->enablePowerOutput(XPOWERS_ALDO3);
+
+  PMU->setChargerConstantCurr(XPOWERS_AXP2101_CHG_CUR_500MA);
+  PMU->setChargeTargetVoltage(XPOWERS_AXP2101_CHG_VOL_4V2);
+
+  // PMU->enableBattDetection();
+  // PMU->enableVbusVoltageMeasure();
+  // PMU->enableBattVoltageMeasure();
+  // PMU->enableSystemVoltageMeasure();
+
+  PMU->enableVbusVoltageMeasure();
+  PMU->enableBattVoltageMeasure();
+  PMU->enableSystemVoltageMeasure();
+
+  PMU->setChargingLedMode(XPOWERS_CHG_LED_CTRL_CHG);
+  // PMU->setPrechargeCurr(XPOWERS_AXP2101_PRECHARGE_200MA);
+  // PMU->setChargerTerminationCurr(XPOWERS_AXP2101_CHG_ITERM_25MA);
+  // PMU->setChargerConstantCurr(XPOWERS_AXP2101_CHG_CUR_1000MA);
+  // PMU->setChargeTargetVoltage(XPOWERS_AXP2101_CHG_VOL_4V2);
+  // PMU->setLowBatWarnThreshold(10);
+  // PMU->setLowBatShutdownThreshold(5);
+  // PMU->enableCellbatteryCharge();
+
+  // Disable all interrupts
+  PMU->disableIRQ(XPOWERS_AXP2101_ALL_IRQ);
+  // PMU->fuelGaugeControl(true, true);
+}
+
 void setup() {
   Serial.begin(230400);
   Serial.println("\n\rc3toc train tracker booting...\n\r");
 
   // GPS chip
-  //Serial1.begin(9600, SERIAL_8N1, 12, 15);  //17-TX 18-RX
   Serial1.begin(9600, SERIAL_8N1, 34, 12, false, 1000);
 
-  // power
-  Wire1.begin(21, 22);
-  axp.begin(Wire, AXP192_SLAVE_ADDRESS);
-  axp.setChgLEDMode (AXP20X_LED_OFF); 
-  axp.setPowerOutPut(AXP192_LDO2, AXP202_OFF); // LORA
-  axp.setPowerOutPut(AXP192_LDO3, AXP202_ON); // GPS
-  axp.setPowerOutPut(AXP192_DCDC2, AXP202_ON);
-  axp.setPowerOutPut(AXP192_EXTEN, AXP202_ON);
-  axp.setPowerOutPut(AXP192_DCDC1, AXP202_ON);
+  Wire.begin(21, 22);
+
+  setupPower();
 
   setupWifi();
 
   heartbeatTask.scheduleTask();
   reconfigureTask.scheduleTask();
   mqttAliveTask.scheduleTask();
+  powerTask.scheduleTask();
 }
 
 void loop() {
