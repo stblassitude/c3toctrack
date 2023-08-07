@@ -110,7 +110,7 @@ class MqttTrainReporterClient:
                 pos['next_stop'] = {
                     'eta': eta,
                     'name': next_stop.name,
-                    'trackmaarker': next_stop.trackmarker,
+                    'trackmarker': next_stop.trackmarker,
                     'type': next_stop.type
                 }
             print(f'JSON {pos}')
