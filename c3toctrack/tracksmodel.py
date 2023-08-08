@@ -70,6 +70,7 @@ class TracksModel:
             match waypoint.type:
                 case 'Bf':
                     properties.update({
+                        'ds100': waypoint.ds100,
                         'marker-symbol': 'rail',
                         'marker-color': '#008'
                     })
@@ -80,6 +81,7 @@ class TracksModel:
                     })
                 case 'Hp':
                     properties.update({
+                        'ds100': waypoint.ds100,
                         'marker-symbol': 'rail',
                         'marker-color': '#008'
                     })
@@ -96,3 +98,11 @@ class TracksModel:
         with atomic_write(filename, overwrite=True, encoding='utf8') as f:
             os.fchmod(f.fileno(), 0o664)
             geojson.dump(feature_collection, f, ensure_ascii=False, sort_keys=True, indent=2)
+
+    def write_station_table(self, filename: str):
+        with atomic_write(filename, overwrite=True, encoding='utf8') as f:
+            os.fchmod(f.fileno(), 0o664)
+            print("^ DS100 ^ km    ^ Name                 ^", file=f)
+            for name, waypoint in sorted(self.waypoints.items()):
+                if waypoint.is_stop():
+                    print(f'| {waypoint.ds100:5s} | {waypoint.trackmarker / 1000.0:0.3f} | {waypoint.name:20s} |', file=f)

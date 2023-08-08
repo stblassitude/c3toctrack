@@ -16,6 +16,7 @@ class Waypoint:
         self.name = name
         self.trackmarker = trackmarker
         self.type = "wp"
+        self.ds100 = None
 
     def is_stop(self):
         """
@@ -40,9 +41,10 @@ class Stop(Waypoint):
     A stop, in German "Haltepunkt" or "Hp". Trains can stop here, but it is not a station.
     """
 
-    def __init__(self, lat: float, lon: float, name: str, trackmarker: float):
+    def __init__(self, lat: float, lon: float, name: str, ds100: str, trackmarker: float):
         super().__init__(lat, lon, name, trackmarker)
         self.type = "Hp"
+        self.ds100 = ds100
 
 
 class Station(Stop):
@@ -52,8 +54,8 @@ class Station(Stop):
     not fulfill these requirements, but trains can still stop there.
     """
 
-    def __init__(self, lat: float, lon: float, name: str, trackmarker: float):
-        super().__init__(lat, lon, name, trackmarker)
+    def __init__(self, lat: float, lon: float, name: str, ds100: str, trackmarker: float):
+        super().__init__(lat, lon, name, ds100, trackmarker)
         self.type = "Bf"
 
 
@@ -71,11 +73,13 @@ def makeWaypoint(lat: float, lon: float, trackmarker: float, label: str) -> Wayp
     (type, name) = label.split(' ', 1)
     match type:
         case "Bf":
-            return Station(lat, lon, name, trackmarker)
+            (ds100, name) = name.split(' ', 1)
+            return Station(lat, lon, name, ds100, trackmarker)
         case "Bü":
             return LevelCrossing(lat, lon, name, trackmarker)
         case "Hp":
-            return Stop(lat, lon, name, trackmarker)
+            (ds100, name) = name.split(' ', 1)
+            return Stop(lat, lon, name, ds100, trackmarker)
         case 'W':
             return Turnout(lat, lon, name, trackmarker)
         case _:

@@ -28,6 +28,7 @@ tracksmodel = TracksModel('data/trainlines.gpx', {
 })
 tracksmodel.write_json('webroot/tracks.json')
 tracksmodel.write_geojson('webroot/tracks.geojson')
+tracksmodel.write_station_table('webroot/stations.dokuwiki')
 
 mqttClient = MqttTrainReporterClient(sys.argv[1], sys.argv[2], sys.argv[3], 'c3toc/train/#', tracksmodel,
                                      'webroot/trains.json', 'webroot/trains.geojson')

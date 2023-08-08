@@ -113,6 +113,7 @@ class MqttTrainReporterClient:
                        ).isoformat() + 'Z'
             if next_stop is not None:
                 pos['next_stop'] = {
+                    'ds100': next_stop.ds100,
                     'eta': eta,
                     'name': next_stop.name,
                     'trackmarker': next_stop.trackmarker,

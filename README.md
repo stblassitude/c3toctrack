@@ -37,6 +37,7 @@ trackmarker (again in meters). Each waypoint has these properties
     * W: Weiche, or switch/turnout
 * trackmarker: the linear position on the track, in meters
 * name: the name of the waypoint
+* ds100: the [DS100](https://de.wikipedia.org/wiki/Betriebsstellenverzeichnis#Deutsche_Bundesbahn) ([official list](http://www.bahnseite.de/DS100/DS100_main.html)) designation for the stop or station
 
 ## `trains.json`
 
