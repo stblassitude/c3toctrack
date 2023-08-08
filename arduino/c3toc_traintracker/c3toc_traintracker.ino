@@ -98,7 +98,7 @@ void mqttConnect() {
   while (!pubSubClient.connected()) {
     Serial.println("Attempting to connect to the MQTT server");
     while (!pubSubClient.connect(mqttParam.user, mqttParam.user, mqttParam.pass,
-      format_topic(topic, "mqttParam.user", "status"), 1, true, "offline")) {
+      format_topic(topic, mqttParam.user, "status"), 1, true, "offline")) {
         Serial.print("Connection to MQTT server failed: ");
         Serial.println(pubSubClient.state());
         delay(5000);
@@ -124,7 +124,7 @@ void mqttUpdate() {
     strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%SZ", &timeinfo);
 
     snprintf(payload, sizeof(payload), "alive %s", ts);
-    pubSubClient.publish(format_topic(topic, "mqttParam.user", "status"), payload);
+    pubSubClient.publish(format_topic(topic, mqttParam.user, "status"), payload);
 
     snprintf(payload, sizeof(payload), "{\"lat\":%.5f,\"lon\":%.5f,\"sat\":%d,\"speed\":%.1f,\"Vbat\":%.2f,\"Vbus\":%.2f,\"ts\":\"%s\"}",
       gps.location.lat(),
@@ -134,7 +134,7 @@ void mqttUpdate() {
       PMU->getBattVoltage()/1000.0,
       PMU->getVbusVoltage()/1000.0,
       ts);
-    pubSubClient.publish(format_topic(topic, "mqttParam.user", "pos"), payload);
+    pubSubClient.publish(format_topic(topic, mqttParam.user, "pos"), payload);
 
     delay(10000);
   }
