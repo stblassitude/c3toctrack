@@ -2,7 +2,8 @@ import json
 import logging
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
+from dateutil.parser import parse
 
 import geojson
 import paho.mqtt.client as mqtt
@@ -91,7 +92,7 @@ class MqttTrainReporterClient:
                 pos['timestamp'] = pos['ts']
                 del pos['ts']
             else:
-                pos['timestamp'] = datetime.now().isoformat()
+                pos['timestamp'] = datetime.now(tz=UTC).isoformat()
             print(
                 f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
 
@@ -187,9 +188,13 @@ class MqttTrainReporterClient:
         mod = False
         for name in list(self.trains['trains'].keys()):
             train = self.trains['trains'][name]
-            timestamp = datetime.fromisoformat(train['timestamp'])
-            if datetime.now() - timestamp > timedelta(minutes=10):
-                print(f'Dropping train {name} due to no more GPS fixes')
+            t = train['timestamp']
+            if t[-1:] != "Z":
+                    t = t + "Z"
+            # timestamp = datetime.fromisoformat(t)
+            timestamp = parse(t)
+            if datetime.now(tz=UTC) - timestamp > timedelta(minutes=10):
+                print(f'Dropping train {name} due to no more GPS fixes {timestamp}')
                 del self.trains['trains'][name]
                 mod = True
         if mod:

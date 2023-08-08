@@ -3,7 +3,7 @@ import logging
 import random
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, UTC
 
 import paho.mqtt.client as mqtt
 
@@ -71,7 +71,7 @@ while True:
         'lon': point['lon'] + ((0.5 - random.random()) * 0.0001),
         'sat': 99,
         'speed': 3.6,
-        'ts': datetime.now().isoformat()
+        'ts': datetime.now(tz=UTC).isoformat()
     }
     if ('waypoint' in point) and point['waypoint'] is not None and ('type' in point['waypoint']) and (point['waypoint']['type'] == 'Bf' or point['waypoint']['type'] == 'Hp'):
         waypoint = point['waypoint']
