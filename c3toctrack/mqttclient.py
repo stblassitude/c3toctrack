@@ -189,11 +189,7 @@ class MqttTrainReporterClient:
         mod = False
         for name in list(self.trains['trains'].keys()):
             train = self.trains['trains'][name]
-            t = train['timestamp']
-            if t[-1:] != "Z":
-                    t = t + "Z"
-            # timestamp = datetime.fromisoformat(t)
-            timestamp = parse(t)
+            timestamp = parse(train['timestamp'])
             if datetime.now(tz=UTC) - timestamp > timedelta(minutes=10):
                 print(f'Dropping train {name} due to no more GPS fixes {timestamp}')
                 del self.trains['trains'][name]
