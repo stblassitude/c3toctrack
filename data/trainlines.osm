@@ -198,7 +198,7 @@
   <node id='-25651' action='modify' visible='true' lat='53.0320776' lon='13.3046474' />
   <node id='-25652' action='modify' visible='true' lat='53.0319052' lon='13.3046297' />
   <node id='-25653' action='modify' visible='true' lat='53.0308769' lon='13.3045158'>
-    <tag k='name' v='Hp GHX Haecksen' />
+    <tag k='name' v='Hp GHX Haecksen/MOiN' />
     <tag k='railway' v='platform' />
   </node>
   <node id='-25654' action='modify' visible='true' lat='53.0306626' lon='13.3043655' />
