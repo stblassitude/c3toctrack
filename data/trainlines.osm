@@ -200,10 +200,7 @@
   </node>
   <node id='-25651' action='modify' visible='true' lat='53.0320776' lon='13.3046474' />
   <node id='-25652' action='modify' visible='true' lat='53.0319052' lon='13.3046297' />
-  <node id='-25653' action='modify' visible='true' lat='53.0308769' lon='13.3045158'>
-    <tag k='name' v='Hp GHX Haecksen/MOiN' />
-    <tag k='railway' v='platform' />
-  </node>
+  <node id='-25653' action='modify' visible='true' lat='53.0308769' lon='13.3045158' />
   <node id='-25654' action='modify' visible='true' lat='53.0306626' lon='13.3043655' />
   <node id='-25655' action='modify' visible='true' lat='53.0306245' lon='13.3043388' />
   <node id='-25656' action='modify' visible='true' lat='53.0305331' lon='13.3042594'>
@@ -302,6 +299,10 @@
   </node>
   <node id='-25985' action='modify' visible='true' lat='53.02988483176' lon='13.30619800674'>
     <tag k='name' v='Bf GLOC LOC' />
+    <tag k='railway' v='platform' />
+  </node>
+  <node id='-26017' action='modify' visible='true' lat='53.03094223869' lon='13.30452581971'>
+    <tag k='name' v='Hp GHX Haecksen/MOiN' />
     <tag k='railway' v='platform' />
   </node>
   <way id='-960' action='modify' visible='true'>
@@ -458,6 +459,7 @@
     <nd ref='-25651' />
     <nd ref='-25652' />
     <nd ref='-25923' />
+    <nd ref='-26017' />
     <nd ref='-25653' />
     <nd ref='-25654' />
     <nd ref='-25655' />

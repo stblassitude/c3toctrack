@@ -3,9 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
   <metadata>
-    <time>2023-08-10T07:02:58.468620Z</time>
+    <time>2023-08-10T07:07:08.674410Z</time>
     <bounds minlat="53.0296179" minlon="13.3028658" maxlat="53.0335194" maxlon="13.3125267"/>
   </metadata>
+  <wpt lat="53.03094223869424" lon="13.304525819706296">
+    <name>Hp GHX Haecksen/MOiN</name>
+  </wpt>
   <wpt lat="53.02988483176" lon="13.30619800674">
     <name>Bf GLOC LOC</name>
   </wpt>
@@ -35,9 +38,6 @@
   </wpt>
   <wpt lat="53.0305331" lon="13.3042594">
     <name>Hp GH Himmel</name>
-  </wpt>
-  <wpt lat="53.0308769" lon="13.3045158">
-    <name>Hp GHX Haecksen/MOiN</name>
   </wpt>
   <wpt lat="53.0321498" lon="13.3046545">
   </wpt>
@@ -388,8 +388,10 @@
       <trkpt lat="53.03154707988" lon="13.30459123789">
         <name>Hp GM Marktplatz</name>
       </trkpt>
-      <trkpt lat="53.0308769" lon="13.3045158">
+      <trkpt lat="53.03094223869424" lon="13.304525819706296">
         <name>Hp GHX Haecksen/MOiN</name>
+      </trkpt>
+      <trkpt lat="53.0308769" lon="13.3045158">
       </trkpt>
       <trkpt lat="53.0306626" lon="13.3043655">
       </trkpt>
