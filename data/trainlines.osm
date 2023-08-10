@@ -145,18 +145,21 @@
     <tag k='name' v='W W402' />
     <tag k='railway' v='switch' />
   </node>
-  <node id='-25624' action='modify' visible='true' lat='53.0330565' lon='13.3078689' />
+  <node id='-25624' action='modify' visible='true' lat='53.0330565' lon='13.3078689'>
+    <tag k='name' v='Hp GMW Milliways' />
+    <tag k='railway' v='platform' />
+  </node>
   <node id='-25625' action='modify' visible='true' lat='53.0331012' lon='13.3077828' />
   <node id='-25626' action='modify' visible='true' lat='53.0331457' lon='13.3076828' />
   <node id='-25627' action='modify' visible='true' lat='53.0331708' lon='13.3075885' />
-  <node id='-25628' action='modify' visible='true' lat='53.0333118' lon='13.3064959' />
-  <node id='-25629' action='modify' visible='true' lat='53.0333483' lon='13.3061952'>
-    <tag k='railway' v='crossing' />
-  </node>
-  <node id='-25630' action='modify' visible='true' lat='53.0333952' lon='13.3058469'>
+  <node id='-25628' action='modify' visible='true' lat='53.0333118' lon='13.3064959'>
     <tag k='name' v='Hp GSP Spielplatz' />
     <tag k='railway' v='platform' />
   </node>
+  <node id='-25629' action='modify' visible='true' lat='53.0333483' lon='13.3061952'>
+    <tag k='railway' v='crossing' />
+  </node>
+  <node id='-25630' action='modify' visible='true' lat='53.0333952' lon='13.3058469' />
   <node id='-25631' action='modify' visible='true' lat='53.0334224' lon='13.3056778' />
   <node id='-25632' action='modify' visible='true' lat='53.0334563' lon='13.3055726' />
   <node id='-25633' action='modify' visible='true' lat='53.0334932' lon='13.3054988'>

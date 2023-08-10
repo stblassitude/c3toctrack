@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
   <metadata>
-    <time>2023-08-09T21:00:13.799062Z</time>
+    <time>2023-08-10T07:02:58.468620Z</time>
     <bounds minlat="53.0296179" minlon="13.3028658" maxlat="53.0335194" maxlon="13.3125267"/>
   </metadata>
   <wpt lat="53.02988483176" lon="13.30619800674">
@@ -55,10 +55,13 @@
   </wpt>
   <wpt lat="53.0334932" lon="13.3054988">
   </wpt>
-  <wpt lat="53.0333952" lon="13.3058469">
+  <wpt lat="53.0333483" lon="13.3061952">
+  </wpt>
+  <wpt lat="53.0333118" lon="13.3064959">
     <name>Hp GSP Spielplatz</name>
   </wpt>
-  <wpt lat="53.0333483" lon="13.3061952">
+  <wpt lat="53.0330565" lon="13.3078689">
+    <name>Hp GMW Milliways</name>
   </wpt>
   <wpt lat="53.0328386" lon="13.3081091">
     <name>W W402</name>
@@ -528,6 +531,7 @@
         <name>W W402</name>
       </trkpt>
       <trkpt lat="53.0330565" lon="13.3078689">
+        <name>Hp GMW Milliways</name>
       </trkpt>
       <trkpt lat="53.0331012" lon="13.3077828">
       </trkpt>
@@ -536,11 +540,11 @@
       <trkpt lat="53.0331708" lon="13.3075885">
       </trkpt>
       <trkpt lat="53.0333118" lon="13.3064959">
+        <name>Hp GSP Spielplatz</name>
       </trkpt>
       <trkpt lat="53.0333483" lon="13.3061952">
       </trkpt>
       <trkpt lat="53.0333952" lon="13.3058469">
-        <name>Hp GSP Spielplatz</name>
       </trkpt>
       <trkpt lat="53.0334224" lon="13.3056778">
       </trkpt>
