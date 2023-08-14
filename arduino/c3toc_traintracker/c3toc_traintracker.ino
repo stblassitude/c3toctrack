@@ -28,7 +28,7 @@ struct mqttParam {
 
 int wifiParamsUpdated = 0;
 
-char topic[] = "c3toc/demo";
+char topic[] = "c3toc/train";
 
 void loadMqttParam() {
   EEPROM.begin(sizeof(mqttParam));
@@ -96,7 +96,14 @@ char *format_topic(const char *t, const char *u, const char *i) {
 
 void mqttConnect() {
   while (!pubSubClient.connected()) {
-    Serial.println("Attempting to connect to the MQTT server");
+    Serial.print("Attempting to connect to the MQTT server \"");
+    Serial.print(mqttParam.host);
+    Serial.print("\", \"");
+    Serial.print(mqttParam.user);
+    Serial.print("\", \"");
+    Serial.print(mqttParam.pass);
+    Serial.println("\"...");
+
     while (!pubSubClient.connect(mqttParam.user, mqttParam.user, mqttParam.pass,
       format_topic(topic, mqttParam.user, "status"), 1, true, "offline")) {
         Serial.print("Connection to MQTT server failed: ");
@@ -156,10 +163,31 @@ void reconfigure() {
 }
 
 
-void gpsAlive() {
+void reconnectWifi() {
   for (;;) {
-    while (Serial1.available())
+    if (WiFi.status() != WL_CONNECTED) {
+      Serial.println("Reconnecting Wifi...");
+      WiFi.disconnect();
+      WiFi.reconnect();
+      delay(2000);
+    }
+    delay(100);
+  }
+}
+
+
+void gpsAlive() {
+  int gpsOk = 0;
+  for (;;) {
+    while (Serial1.available()) {
       gps.encode(Serial1.read());
+      if (gpsOk == 0)
+        gpsOk = 1;
+    }
+    if (gpsOk == 1) {
+      Serial.println("GPS data received");
+      gpsOk = 2;
+    }
     delay(10);
   }
 }
@@ -169,6 +197,7 @@ BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> heartbeatTask("heartbeat", h
 BasicCoopTask<CoopTaskStackAllocatorAsMember<16384>> mqttUpdateTask("mqttUpdate", mqttUpdate);
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> reconfigureTask("reconfigure", reconfigure);
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> gpsTask("gps", gpsAlive);
+BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> reconnectTask("reconnect", reconnectWifi);
 
 
 
@@ -276,6 +305,70 @@ void setupPower() {
   Serial.print("AXP Chip ID: ");
   Serial.println(PMU->getChipID());
 
+  if (PMU->getChipModel() == XPOWERS_AXP192) {
+    // lora radio power channel
+    PMU->setPowerChannelVoltage(XPOWERS_LDO2, 3300);
+    PMU->enablePowerOutput(XPOWERS_LDO2);
+    // PMU->disablePowerOutput(XPOWERS_LDO2);
+
+    // oled module power channel,
+    // disable it will cause abnormal communication between boot and AXP power supply,
+    // do not turn it off
+    PMU->setPowerChannelVoltage(XPOWERS_DCDC1, 3300);
+    // enable oled power
+    PMU->enablePowerOutput(XPOWERS_DCDC1);
+
+    // gnss module power channel -  now turned on in setGpsPower
+    PMU->setPowerChannelVoltage(XPOWERS_LDO3, 3300);
+    // PMU->enablePowerOutput(XPOWERS_LDO3);
+
+    // protected oled power source
+    PMU->setProtectedChannel(XPOWERS_DCDC1);
+    // protected esp32 power source
+    PMU->setProtectedChannel(XPOWERS_DCDC3);
+
+    // disable not use channel
+    PMU->disablePowerOutput(XPOWERS_DCDC2);
+
+    // disable all axp chip interrupt
+    PMU->disableIRQ(XPOWERS_AXP192_ALL_IRQ);
+
+    // Set constant current charging current
+    PMU->setChargerConstantCurr(XPOWERS_AXP192_CHG_CUR_450MA);
+
+    // Set up the charging voltage
+    PMU->setChargeTargetVoltage(XPOWERS_AXP192_CHG_VOL_4V2);
+  } else if (PMU->getChipModel() == XPOWERS_AXP2101) {
+    // Unuse power channel
+    PMU->disablePowerOutput(XPOWERS_DCDC2);
+    PMU->disablePowerOutput(XPOWERS_DCDC3);
+    PMU->disablePowerOutput(XPOWERS_DCDC4);
+    PMU->disablePowerOutput(XPOWERS_DCDC5);
+    PMU->disablePowerOutput(XPOWERS_ALDO1);
+    PMU->disablePowerOutput(XPOWERS_ALDO4);
+    PMU->disablePowerOutput(XPOWERS_BLDO1);
+    PMU->disablePowerOutput(XPOWERS_BLDO2);
+    PMU->disablePowerOutput(XPOWERS_DLDO1);
+    PMU->disablePowerOutput(XPOWERS_DLDO2);
+
+    // GNSS RTC PowerVDD 3300mV
+    PMU->setPowerChannelVoltage(XPOWERS_VBACKUP, 3300);
+    PMU->enablePowerOutput(XPOWERS_VBACKUP);
+
+    // ESP32 VDD 3300mV
+    //  ! No need to set, automatically open , Don't close it
+    //  PMU->setPowerChannelVoltage(XPOWERS_DCDC1, 3300);
+    //  PMU->setProtectedChannel(XPOWERS_DCDC1);
+
+    // LoRa VDD 3300mV
+    PMU->setPowerChannelVoltage(XPOWERS_ALDO2, 3300);
+    PMU->enablePowerOutput(XPOWERS_ALDO2);
+
+    // GNSS VDD 3300mV
+    PMU->setPowerChannelVoltage(XPOWERS_ALDO3, 3300);
+    PMU->enablePowerOutput(XPOWERS_ALDO3);
+  }
+
   // PMU->setVbusVoltageLimit(XPOWERS_AXP2101_VBUS_VOL_LIM_4V36);
   // PMU->setVbusCurrentLimit(XPOWERS_AXP2101_VBUS_CUR_LIM_1500MA);
   // PMU->setDC1Voltage(3300);
@@ -358,6 +451,7 @@ void setup() {
   reconfigureTask.scheduleTask();
   mqttUpdateTask.scheduleTask();
   gpsTask.scheduleTask();
+  reconnectTask.scheduleTask();
 
   wifiClient.setInsecure();
   pubSubClient.setServer(mqttParam.host, 8883);
