@@ -44,6 +44,8 @@ class Point:
         """
         Given a triangle a, b, c, return the relative distance of c projected to the base line of a-b.
         """
+        if ab == 0:
+                return 0
         s = (ab + bc + ca) / 2
         hc = 2 * sqrt(s * (s - ab) * (s - bc) * (s - ca)) / ab
         return sqrt(hc * hc + ca * ca)
