@@ -170,7 +170,7 @@ void mqttUpdate() {
     snprintf(payload, sizeof(payload), "alive %s", ts);
     pubSubClient.publish(format_topic(topic, mqttParam.user, "status"), payload);
 
-    snprintf(payload, sizeof(payload), "{\"lat\":%.5f,\"lon\":%.5f,\"sat\":%d,\"speed\":%.1f,\"Vbat\":%.2f,\"Vbus\":%.2f,\"ts\":\"%s\",\"rssi\":%d}",
+    snprintf(payload, sizeof(payload), "{\"lat\":%.5f,\"lon\":%.5f,\"sat\":%d,\"speed\":%.1f,\"Vbat\":%.2f,\"Vbus\":%.2f,\"ts\":\"%s\",\"rssi\":%d,\"bssid\":\"%s\"}",
       gps.location.lat(),
       gps.location.lng(),
       gps.satellites.value(),
@@ -178,8 +178,8 @@ void mqttUpdate() {
       PMU->getBattVoltage()/1000.0,
       PMU->getVbusVoltage()/1000.0,
       ts,
-      WiFi.RSSI()//,
-      //const_cast<char*>(WiFi.BSSIDstr().c_str())
+      WiFi.RSSI(),
+      const_cast<char*>(WiFi.BSSIDstr().c_str())
       );
     pubSubClient.publish(format_topic(topic, mqttParam.user, "pos"), payload);
     Serial.println("sent");
