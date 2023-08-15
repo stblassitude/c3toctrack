@@ -95,15 +95,33 @@ char *format_topic(const char *t, const char *u, const char *i) {
 
 
 void mqttConnect() {
-  while (WiFi.status() != WL_CONNECTED || !pubSubClient.connected()) {
+  int retryCount = 0;
+
+  while (WiFi.status() != WL_CONNECTED || !pubSubClient.connected()) {  
+    Serial.print('(');
+    Serial.print(WiFi.RSSI());
+    Serial.println(')');
+  
     while (WiFi.status() != WL_CONNECTED) {
-      Serial.println("Reconnecting Wifi...");
-      WiFi.disconnect();
-      WiFi.begin();
-      delay(5000);
+      Serial.print("Reconnecting Wifi: ");
+      WiFi.reconnect();
+
+      retryCount = 0;
+
+      while (WiFi.status() != WL_CONNECTED && retryCount < 15) {
+        Serial.print(".");
+        delay(1000);
+
+        retryCount++;
+      }
+
+      if (retryCount < 15)
+        Serial.println(WiFi.localIP());
+      else
+        Serial.println("Timeout connecting");
     }
 
-    while (!pubSubClient.connected()) {
+    // while (!pubSubClient.connected()) {
       Serial.print("Attempting to connect to the MQTT server \"");
       Serial.print(mqttParam.host);
       Serial.print("\", \"");
@@ -116,10 +134,10 @@ void mqttConnect() {
         format_topic(topic, mqttParam.user, "status"), 1, true, "offline")) {
           Serial.print("Connection to MQTT server failed: ");
           Serial.println(pubSubClient.state());
-          WiFi.disconnect();
+          //WiFi.disconnect();
           delay(5000);
       }
-    }
+    // }
     if (WiFi.status() == WL_CONNECTED && pubSubClient.connected())
       Serial.println("Connected to the MQTT server");
   }
@@ -135,10 +153,15 @@ void mqttUpdate() {
   for (;;) {
     if (WiFi.status() != WL_CONNECTED || !pubSubClient.connected()) {
       // wait for main loop to reconnect
+      Serial.println("Wait for reconnect!");
       delay(1000);
       continue;
     }
-    Serial.print("Updating MQTT... ");
+    Serial.print("Updating MQTT ");
+    Serial.print("(");
+    Serial.print(WiFi.RSSI());
+    Serial.print(" dB): ");
+
     now = time(nullptr);
     gmtime_r(&now, &timeinfo);
     strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%SZ", &timeinfo);
