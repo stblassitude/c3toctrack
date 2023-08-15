@@ -95,22 +95,32 @@ char *format_topic(const char *t, const char *u, const char *i) {
 
 
 void mqttConnect() {
-  while (!pubSubClient.connected()) {
-    Serial.print("Attempting to connect to the MQTT server \"");
-    Serial.print(mqttParam.host);
-    Serial.print("\", \"");
-    Serial.print(mqttParam.user);
-    Serial.print("\", \"");
-    Serial.print(mqttParam.pass);
-    Serial.println("\"...");
-
-    while (!pubSubClient.connect(mqttParam.user, mqttParam.user, mqttParam.pass,
-      format_topic(topic, mqttParam.user, "status"), 1, true, "offline")) {
-        Serial.print("Connection to MQTT server failed: ");
-        Serial.println(pubSubClient.state());
-        delay(5000);
+  while (WiFi.status() != WL_CONNECTED || !pubSubClient.connected()) {
+    while (WiFi.status() != WL_CONNECTED) {
+      Serial.println("Reconnecting Wifi...");
+      WiFi.disconnect();
+      WiFi.begin();
+      delay(2000);
     }
-    Serial.println("Connected to the MQTT server");
+
+    while (!pubSubClient.connected()) {
+      Serial.print("Attempting to connect to the MQTT server \"");
+      Serial.print(mqttParam.host);
+      Serial.print("\", \"");
+      Serial.print(mqttParam.user);
+      Serial.print("\", \"");
+      Serial.print(mqttParam.pass);
+      Serial.println("\"...");
+
+      while (!pubSubClient.connect(mqttParam.user, mqttParam.user, mqttParam.pass,
+        format_topic(topic, mqttParam.user, "status"), 1, true, "offline")) {
+          Serial.print("Connection to MQTT server failed: ");
+          Serial.println(pubSubClient.state());
+          delay(5000);
+      }
+    }
+    if (WiFi.status() == WL_CONNECTED && pubSubClient.connected())
+      Serial.println("Connected to the MQTT server");
   }
 }
 
@@ -122,10 +132,12 @@ void mqttUpdate() {
   struct tm timeinfo;
 
   for (;;) {
-    if (!pubSubClient.connected()) {
+    if (WiFi.status() != WL_CONNECTED || !pubSubClient.connected()) {
+      // wait for main loop to reconnect
       delay(1000);
       continue;
     }
+    Serial.print("Updating MQTT... ");
     now = time(nullptr);
     gmtime_r(&now, &timeinfo);
     strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%SZ", &timeinfo);
@@ -142,6 +154,7 @@ void mqttUpdate() {
       PMU->getVbusVoltage()/1000.0,
       ts);
     pubSubClient.publish(format_topic(topic, mqttParam.user, "pos"), payload);
+    Serial.println("sent");
 
     delay(10000);
   }
@@ -159,19 +172,6 @@ void reconfigure() {
       ESP.restart();
     }
     delay(10);
-  }
-}
-
-
-void reconnectWifi() {
-  for (;;) {
-    if (WiFi.status() != WL_CONNECTED) {
-      Serial.println("Reconnecting Wifi...");
-      WiFi.disconnect();
-      WiFi.reconnect();
-      delay(2000);
-    }
-    delay(100);
   }
 }
 
@@ -194,10 +194,9 @@ void gpsAlive() {
 
 
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> heartbeatTask("heartbeat", heartbeat);
-BasicCoopTask<CoopTaskStackAllocatorAsMember<16384>> mqttUpdateTask("mqttUpdate", mqttUpdate);
+BasicCoopTask<CoopTaskStackAllocatorAsMember<32768>> mqttUpdateTask("mqttUpdate", mqttUpdate);
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> reconfigureTask("reconfigure", reconfigure);
 BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> gpsTask("gps", gpsAlive);
-BasicCoopTask<CoopTaskStackAllocatorAsMember<2000>> reconnectTask("reconnect", reconnectWifi);
 
 
 
@@ -451,7 +450,6 @@ void setup() {
   reconfigureTask.scheduleTask();
   mqttUpdateTask.scheduleTask();
   gpsTask.scheduleTask();
-  reconnectTask.scheduleTask();
 
   wifiClient.setInsecure();
   pubSubClient.setServer(mqttParam.host, 8883);
@@ -459,7 +457,7 @@ void setup() {
 
 void loop() {
   runCoopTasks();
-  mqttConnect();
   pubSubClient.loop();
+  mqttConnect();
   delay(10);
 }
