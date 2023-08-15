@@ -157,10 +157,11 @@ void mqttUpdate() {
       delay(1000);
       continue;
     }
-    Serial.print("Updating MQTT ");
-    Serial.print("(");
+    Serial.print("Updating MQTT (");
     Serial.print(WiFi.RSSI());
-    Serial.print(" dB): ");
+    Serial.print(" dB; ");
+    Serial.print(WiFi.BSSIDstr());
+    Serial.print("): ");
 
     now = time(nullptr);
     gmtime_r(&now, &timeinfo);
@@ -169,14 +170,17 @@ void mqttUpdate() {
     snprintf(payload, sizeof(payload), "alive %s", ts);
     pubSubClient.publish(format_topic(topic, mqttParam.user, "status"), payload);
 
-    snprintf(payload, sizeof(payload), "{\"lat\":%.5f,\"lon\":%.5f,\"sat\":%d,\"speed\":%.1f,\"Vbat\":%.2f,\"Vbus\":%.2f,\"ts\":\"%s\"}",
+    snprintf(payload, sizeof(payload), "{\"lat\":%.5f,\"lon\":%.5f,\"sat\":%d,\"speed\":%.1f,\"Vbat\":%.2f,\"Vbus\":%.2f,\"ts\":\"%s\",\"rssi\":%d}",
       gps.location.lat(),
       gps.location.lng(),
       gps.satellites.value(),
       gps.speed.kmph(),
       PMU->getBattVoltage()/1000.0,
       PMU->getVbusVoltage()/1000.0,
-      ts);
+      ts,
+      WiFi.RSSI()//,
+      //const_cast<char*>(WiFi.BSSIDstr().c_str())
+      );
     pubSubClient.publish(format_topic(topic, mqttParam.user, "pos"), payload);
     Serial.println("sent");
 
