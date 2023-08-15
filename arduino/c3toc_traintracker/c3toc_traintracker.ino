@@ -100,7 +100,7 @@ void mqttConnect() {
       Serial.println("Reconnecting Wifi...");
       WiFi.disconnect();
       WiFi.begin();
-      delay(2000);
+      delay(5000);
     }
 
     while (!pubSubClient.connected()) {
@@ -112,10 +112,11 @@ void mqttConnect() {
       Serial.print(mqttParam.pass);
       Serial.println("\"...");
 
-      while (!pubSubClient.connect(mqttParam.user, mqttParam.user, mqttParam.pass,
+      if (!pubSubClient.connect(mqttParam.user, mqttParam.user, mqttParam.pass,
         format_topic(topic, mqttParam.user, "status"), 1, true, "offline")) {
           Serial.print("Connection to MQTT server failed: ");
           Serial.println(pubSubClient.state());
+          WiFi.disconnect();
           delay(5000);
       }
     }
