@@ -189,7 +189,7 @@ class MqttTrainReporterClient:
 
     def log(self, pos):
         with open('mqtt.log', 'a') as f:
-            json.dump(pos, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)
+            json.dump(pos, f, default=vars, ensure_ascii=False, sort_keys=True)
             f.write('\n')
 
 
