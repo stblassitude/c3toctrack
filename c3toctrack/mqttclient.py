@@ -45,84 +45,89 @@ class MqttTrainReporterClient:
 
     def on_message(self, client, userdata, msg):
         print(f'Message received for topic "{msg.topic}": "{msg.payload}"')
-        (_, _, name, kind) = msg.topic.split('/')
-        if kind == 'pos':
-            pos = json.loads(msg.payload.decode('utf-8'))
-            point = Point(pos['lat'], pos['lon'])
-            distance = 1e36
-            closest = None
-            second = None
-            trackname = None
-            for track in self.tracksmodel.tracks.values():
-                for i in range(0, len(track.points)):
-                    d = Point.distance(point, track.points[i])
-                    if d < distance:
-                        distance = d
-                        closest = track.points[i]
-                        trackname = track.name
-                        dp = 1e36
-                        dn = 1e36
-                        if i > 0:
-                            dp = Point.distance(point, track.points[i - 1])
-                        if i < len(track.points) - 1:
-                            dn = Point.distance(point, track.points[i + 1])
-                        if dp < dn:
-                            second = track.points[i - 1]
-                        else:
-                            second = track.points[i + 1]
-            if second is None:
-                pos['trackmarker'] = closest.trackmarker
-            else:
-                ab = Point.distance(closest, second)
-                bc = Point.distance(second, point)
-                ca = Point.distance(point, closest)
-                if bc == 0:
-                    pos['trackmarker'] = second.trackmarker
-                elif ca == 0:
+        try:
+            (_, _, name, kind) = msg.topic.split('/')
+            if kind == 'pos':
+                pos = json.loads(msg.payload.decode('utf-8'))
+                point = Point(pos['lat'], pos['lon'])
+                distance = 1e36
+                closest = None
+                second = None
+                trackname = None
+                for track in self.tracksmodel.tracks.values():
+                    for i in range(0, len(track.points)):
+                        d = Point.distance(point, track.points[i])
+                        if d < distance:
+                            distance = d
+                            closest = track.points[i]
+                            trackname = track.name
+                            dp = 1e36
+                            dn = 1e36
+                            if i > 0:
+                                dp = Point.distance(point, track.points[i - 1])
+                            if i < len(track.points) - 1:
+                                dn = Point.distance(point, track.points[i + 1])
+                            if dp < dn:
+                                second = track.points[i - 1]
+                            else:
+                                second = track.points[i + 1]
+                if second is None:
                     pos['trackmarker'] = closest.trackmarker
                 else:
-                    d = Point.nearest_distance(ab, bc, ca)
-                    if second.trackmarker > closest.trackmarker:
-                        pos['trackmarker'] = closest.trackmarker + d
+                    ab = Point.distance(closest, second)
+                    bc = Point.distance(second, point)
+                    ca = Point.distance(point, closest)
+                    if bc == 0:
+                        pos['trackmarker'] = second.trackmarker
+                    elif ca == 0:
+                        pos['trackmarker'] = closest.trackmarker
                     else:
-                        pos['trackmarker'] = closest.trackmarker - d
-            pos['trackmarker'] = int(pos['trackmarker'])
-            pos['trackname'] = trackname
-            if 'ts' in pos:
-                pos['timestamp'] = pos['ts']
-                del pos['ts']
-            else:
-                pos['timestamp'] = datetime.now(tz=UTC).isoformat()
-            print(
-                f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
-
-            if name in self.trains['trains']:
-                lastpos = self.trains['trains'][name]
-                lastpoint = Point(lastpos['lat'], lastpos['lon'])
-                if Point.distance(lastpoint, point) < 2:
-                    pos['dir'] = lastpos['dir']
+                        d = Point.nearest_distance(ab, bc, ca)
+                        if second.trackmarker > closest.trackmarker:
+                            pos['trackmarker'] = closest.trackmarker + d
+                        else:
+                            pos['trackmarker'] = closest.trackmarker - d
+                pos['trackmarker'] = int(pos['trackmarker'])
+                pos['trackname'] = trackname
+                if 'ts' in pos:
+                    pos['timestamp'] = pos['ts']
+                    del pos['ts']
                 else:
-                    pos['dir'] = int(lastpoint.angle(point))
-            else:
-                pos['dir'] = 0
-            next_stop = self.find_next_stop(pos)
-            eta = None
-            if pos['speed'] > 0:
-                eta = (datetime.utcnow()
-                       + timedelta(seconds=int(abs(pos['trackmarker'] - next_stop.trackmarker) / (pos['speed'] / 3.6)))
-                       ).isoformat() + 'Z'
-            if next_stop is not None:
-                pos['next_stop'] = {
-                    'ds100': next_stop.ds100,
-                    'eta': eta,
-                    'name': next_stop.name,
-                    'trackmarker': next_stop.trackmarker,
-                    'type': next_stop.type
-                }
-            print(f'JSON {pos}')
-            self.trains['trains'][name] = pos
-            self.update_trains()
-            self.write_geojson()
+                    pos['timestamp'] = datetime.now(tz=UTC).isoformat()
+                print(
+                    f"closest {closest.trackmarker:4.0f} - loco {pos['trackmarker']:4.0f} - second {second.trackmarker:4.0f}")
+
+                if name in self.trains['trains']:
+                    lastpos = self.trains['trains'][name]
+                    lastpoint = Point(lastpos['lat'], lastpos['lon'])
+                    if Point.distance(lastpoint, point) < 2:
+                        pos['dir'] = lastpos['dir']
+                    else:
+                        pos['dir'] = int(lastpoint.angle(point))
+                else:
+                    pos['dir'] = 0
+                next_stop = self.find_next_stop(pos)
+                eta = None
+                if pos['speed'] > 0:
+                    eta = (datetime.utcnow()
+                           + timedelta(seconds=int(abs(pos['trackmarker'] - next_stop.trackmarker) / (pos['speed'] / 3.6)))
+                           ).isoformat() + 'Z'
+                if next_stop is not None:
+                    pos['next_stop'] = {
+                        'ds100': next_stop.ds100,
+                        'eta': eta,
+                        'name': next_stop.name,
+                        'trackmarker': next_stop.trackmarker,
+                        'type': next_stop.type
+                    }
+                print(f'JSON {pos}')
+                self.trains['trains'][name] = pos
+                self.update_trains()
+                self.write_geojson()
+                self.log(pos)
+        except Exception as e:
+            print(f'Unable to process message: {e}')
+
 
     def find_next_stop(self, pos: dict) -> 'Waypoint':
         """
@@ -180,6 +185,13 @@ class MqttTrainReporterClient:
             reconnect_delay = min(reconnect_delay, MqttTrainReporterClient.MAX_RECONNECT_DELAY)
             reconnect_count += 1
         logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
+
+
+    def log(self, pos):
+        with open('mqtt.log', 'a') as f:
+            json.dump(pos, f, default=vars, ensure_ascii=False, sort_keys=True, indent=2)
+            f.write('\n')
+
 
     def cleanup(self):
         """
