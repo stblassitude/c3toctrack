@@ -3,6 +3,10 @@
 Tracker Infrastructure for the c3toc trains at #cccamp23. See [c3toc.de](https://c3toc.de)
 and [api.c3toc.de](https://api.c3toc.de).
 
+# Hardware
+
+The trackers have been built using [Lilygo T-Beam](https://www.lilygo.cc/products/t-beam-v1-1-esp32-lora-module) modules, which combine an ESP32 with a Neo 6M GPS receiver, a Lora radio, and a 18650 LiIon battery holder, with power controller to allow running off the battery and charge it. The module is about 50€ and comes with a small GPS antenna that is not very good; you can easily replace it with a better one. Note that there are many clones of this board that use slightly different hardware or pinouts, so some experimentation might be needed. The Lora radio is not currently used, but it would be easy to (also) transmit the data via LoraWan, for example to The Things Network. With a brand-name 18650, the tracker ran for up to 36 hours at Camp.
+
 # JSON API
 
 The python script `mqtt2json.py` generates four JSON files: `tracks.json`, `tracks.geojson`, `trains.json`,
