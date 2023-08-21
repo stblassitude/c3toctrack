@@ -39,7 +39,6 @@ class MqttTrainReporterClient:
             if point.is_stop():
                 self.waypoints.append(point)
 
-
     def on_connect(self, client, userdata, flags, rc):
         print("Connected with result code " + str(rc))
 
@@ -110,7 +109,8 @@ class MqttTrainReporterClient:
                 eta = None
                 if pos['speed'] > 0:
                     eta = (datetime.utcnow()
-                           + timedelta(seconds=int(abs(pos['trackmarker'] - next_stop.trackmarker) / (pos['speed'] / 3.6)))
+                           + timedelta(
+                                seconds=int(abs(pos['trackmarker'] - next_stop.trackmarker) / (pos['speed'] / 3.6)))
                            ).isoformat() + 'Z'
                 if next_stop is not None:
                     pos['next_stop'] = {
@@ -128,7 +128,6 @@ class MqttTrainReporterClient:
         except Exception as e:
             print(f'Unable to process message: {e}')
 
-
     def find_next_stop(self, pos: dict) -> 'Waypoint':
         """
         Given the trains current position on the track, find the next stop.
@@ -144,7 +143,6 @@ class MqttTrainReporterClient:
             stop = self.waypoints[0]
         return stop
 
-
     def update_trains(self):
         with atomic_write(self.trains_json, overwrite=True, encoding='utf8') as f:
             os.fchmod(f.fileno(), 0o664)
@@ -155,7 +153,7 @@ class MqttTrainReporterClient:
         for name, train in self.trains['trains'].items():
             properties = train.copy()
             properties.update({
-                'marker-symbol': 'rocket', # no good loco in Maki set
+                'marker-symbol': 'rocket',  # no good loco in Maki set
                 'marker-color': '#cc0',
                 'name': name,
             })
@@ -186,12 +184,11 @@ class MqttTrainReporterClient:
             reconnect_count += 1
         logging.info("Reconnect failed after %s attempts. Exiting...", reconnect_count)
 
-
     def log(self, pos):
-        with open('mqtt.log', 'a') as f:
-            json.dump(pos, f, default=vars, ensure_ascii=False, sort_keys=True)
-            f.write('\n')
-
+        pass
+        # with open('mqtt.log', 'a') as f:
+        #     json.dump(pos, f, default=vars, ensure_ascii=False, sort_keys=True)
+        #     f.write('\n')
 
     def cleanup(self):
         """
